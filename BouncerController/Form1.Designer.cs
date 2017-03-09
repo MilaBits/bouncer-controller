@@ -77,7 +77,9 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tspConnection = new System.Windows.Forms.ToolStripProgressBar();
             this.tslConnection = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsdComs = new System.Windows.Forms.ToolStripDropDownButton();
+            this.cbbComPorts = new System.Windows.Forms.ComboBox();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.trbTilt)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,7 +158,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.trbTilt);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(170, 232);
             this.groupBox1.TabIndex = 3;
@@ -416,7 +418,7 @@
             this.groupBox6.Controls.Add(this.btnToggleRandomControls);
             this.groupBox6.Controls.Add(this.groupBox5);
             this.groupBox6.Controls.Add(this.btnResetControls);
-            this.groupBox6.Location = new System.Drawing.Point(364, 12);
+            this.groupBox6.Location = new System.Drawing.Point(364, 49);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(172, 232);
             this.groupBox6.TabIndex = 11;
@@ -435,7 +437,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.trbSpeed);
-            this.groupBox4.Location = new System.Drawing.Point(188, 12);
+            this.groupBox4.Location = new System.Drawing.Point(188, 49);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(170, 232);
             this.groupBox4.TabIndex = 10;
@@ -538,8 +540,7 @@
             // btnClearLog
             // 
             this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearLog.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClearLog.Location = new System.Drawing.Point(438, 432);
+            this.btnClearLog.Location = new System.Drawing.Point(438, 476);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(98, 23);
             this.btnClearLog.TabIndex = 14;
@@ -551,7 +552,7 @@
             this.tbLogInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbLogInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbLogInput.Location = new System.Drawing.Point(12, 433);
+            this.tbLogInput.Location = new System.Drawing.Point(12, 477);
             this.tbLogInput.Name = "tbLogInput";
             this.tbLogInput.Size = new System.Drawing.Size(339, 22);
             this.tbLogInput.TabIndex = 14;
@@ -559,8 +560,7 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSend.Location = new System.Drawing.Point(357, 432);
+            this.btnSend.Location = new System.Drawing.Point(357, 476);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 15;
@@ -570,7 +570,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 247);
+            this.label6.Location = new System.Drawing.Point(15, 284);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 17);
             this.label6.TabIndex = 10;
@@ -581,7 +581,7 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(44, 255);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(44, 292);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(500, 1);
             this.flowLayoutPanel1.TabIndex = 16;
@@ -604,7 +604,7 @@
             "t",
             "t",
             "t"});
-            this.lbLog.Location = new System.Drawing.Point(12, 267);
+            this.lbLog.Location = new System.Drawing.Point(12, 304);
             this.lbLog.Name = "lbLog";
             this.lbLog.Size = new System.Drawing.Size(524, 164);
             this.lbLog.TabIndex = 17;
@@ -614,7 +614,7 @@
             this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(-3, 255);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(-3, 292);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(20, 1);
             this.flowLayoutPanel2.TabIndex = 17;
@@ -624,9 +624,8 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspConnection,
-            this.tslConnection,
-            this.tsdComs});
-            this.statusStrip.Location = new System.Drawing.Point(0, 461);
+            this.tslConnection});
+            this.statusStrip.Location = new System.Drawing.Point(0, 516);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.statusStrip.Size = new System.Drawing.Size(544, 28);
@@ -645,21 +644,45 @@
             this.tslConnection.Size = new System.Drawing.Size(80, 23);
             this.tslConnection.Text = "Connected";
             // 
-            // tsdComs
+            // cbbComPorts
             // 
-            this.tsdComs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsdComs.Image = global::BouncerController.Properties.Resources.search;
-            this.tsdComs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsdComs.Margin = new System.Windows.Forms.Padding(2);
-            this.tsdComs.Name = "tsdComs";
-            this.tsdComs.Size = new System.Drawing.Size(34, 24);
-            this.tsdComs.Text = "toolStripDropDownButton1";
+            this.cbbComPorts.FormattingEnabled = true;
+            this.cbbComPorts.Location = new System.Drawing.Point(12, 12);
+            this.cbbComPorts.Name = "cbbComPorts";
+            this.cbbComPorts.Size = new System.Drawing.Size(113, 24);
+            this.cbbComPorts.TabIndex = 19;
+            this.cbbComPorts.Text = "Select port";
+            this.cbbComPorts.SelectedIndexChanged += new System.EventHandler(this.cbbComPorts_SelectedIndexChanged);
+            this.cbbComPorts.Click += new System.EventHandler(this.cbbComPorts_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(131, 12);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(81, 24);
+            this.btnConnect.TabIndex = 10;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 42);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(550, 1);
+            this.flowLayoutPanel3.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 489);
+            this.ClientSize = new System.Drawing.Size(544, 544);
+            this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.btnConnect);
+            this.Controls.Add(this.cbbComPorts);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.lbLog);
@@ -747,7 +770,9 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tslConnection;
         private System.Windows.Forms.ToolStripProgressBar tspConnection;
-        private System.Windows.Forms.ToolStripDropDownButton tsdComs;
+        private System.Windows.Forms.ComboBox cbbComPorts;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }
 
