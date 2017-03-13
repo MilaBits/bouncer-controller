@@ -540,7 +540,7 @@
             // btnClearLog
             // 
             this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearLog.Location = new System.Drawing.Point(438, 476);
+            this.btnClearLog.Location = new System.Drawing.Point(444, 476);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(98, 23);
             this.btnClearLog.TabIndex = 14;
@@ -554,13 +554,13 @@
             this.tbLogInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbLogInput.Location = new System.Drawing.Point(12, 477);
             this.tbLogInput.Name = "tbLogInput";
-            this.tbLogInput.Size = new System.Drawing.Size(339, 22);
+            this.tbLogInput.Size = new System.Drawing.Size(345, 22);
             this.tbLogInput.TabIndex = 14;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(357, 476);
+            this.btnSend.Location = new System.Drawing.Point(363, 476);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 15;
@@ -583,7 +583,7 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(44, 292);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(500, 1);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(506, 1);
             this.flowLayoutPanel1.TabIndex = 16;
             // 
             // lbLog
@@ -593,20 +593,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLog.FormattingEnabled = true;
             this.lbLog.ItemHeight = 16;
-            this.lbLog.Items.AddRange(new object[] {
-            "t",
-            "t",
-            "t",
-            "t",
-            "t",
-            "t",
-            "t",
-            "t",
-            "t",
-            "t"});
             this.lbLog.Location = new System.Drawing.Point(12, 304);
             this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(524, 164);
+            this.lbLog.Size = new System.Drawing.Size(530, 164);
             this.lbLog.TabIndex = 17;
             // 
             // flowLayoutPanel2
@@ -616,7 +605,7 @@
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(-3, 292);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(20, 1);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(26, 1);
             this.flowLayoutPanel2.TabIndex = 17;
             // 
             // statusStrip
@@ -628,7 +617,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 516);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip.Size = new System.Drawing.Size(544, 28);
+            this.statusStrip.Size = new System.Drawing.Size(550, 28);
             this.statusStrip.TabIndex = 18;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -672,14 +661,14 @@
             this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 42);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(550, 1);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(556, 1);
             this.flowLayoutPanel3.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 544);
+            this.ClientSize = new System.Drawing.Size(550, 544);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.cbbComPorts);
@@ -697,6 +686,7 @@
             this.MinimumSize = new System.Drawing.Size(562, 536);
             this.Name = "Form1";
             this.Text = "Bouncer Controller";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trbTilt)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

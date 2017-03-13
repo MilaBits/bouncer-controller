@@ -11,10 +11,10 @@ using System.Windows.Forms;
 using EV3MessengerLib;
 
 namespace BouncerController {
-    public partial class Form1 : Form {
+    public partial class MainForm : Form {
         private EV3Messenger ev3Messenger;
 
-        public Form1() {
+        public MainForm() {
             InitializeComponent();
         }
 
@@ -70,8 +70,10 @@ namespace BouncerController {
 
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form2_Load(object sender, EventArgs e) {
 
         }
+
+
     }
 }
