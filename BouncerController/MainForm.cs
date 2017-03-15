@@ -15,30 +15,36 @@ namespace BouncerController {
     public partial class MainForm : Form {
         private EV3Messenger ev3Messenger;
         private Form controlForm;
+        private Form scoreboardForm;
 
         public MainForm() {
             InitializeComponent();
             ev3Messenger = new EV3Messenger();
 
             controlForm = new ControlForm();
+            scoreboardForm = new ScoreboardForm();
         }
 
         private void FillComList() {
             cbbComPorts.Items.Clear();
-
             using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'")) {
                 var instances = new ManagementClass("Win32_SerialPort").GetInstances();
                 foreach (ManagementObject port in instances) {
                     cbbComPorts.Items.Add(String.Format("{0}", port["deviceid"]));
                 }
             }
+            //string[] ports = SerialPort.GetPortNames();
+            //foreach (string portName in ports)
+            //{
+            //    cbbComPorts.Items.Add(portName);
+            //}
         }
 
         private void cbbComPorts_Click(object sender, EventArgs e) {
         }
 
         private void btnConnect_Click(object sender, EventArgs e) {
-
+            toggleTop(false);
             if (btnConnect.Text == "Connect") {
                 //String port = cbbComPorts.Text.Substring(0,cbbComPorts.Text.IndexOf(' '));
                 String port = cbbComPorts.Text;
@@ -55,6 +61,7 @@ namespace BouncerController {
                 ev3Messenger.Disconnect();
                 UpdateButtonsAndConnectionInfo();
             }
+            toggleTop(true);
         }
 
         private void UpdateButtonsAndConnectionInfo() {
@@ -153,6 +160,14 @@ namespace BouncerController {
 
         private void MainForm_Move(object sender, EventArgs e) {
             moveChildWindow(controlForm);
+        }
+
+        private void btnScoreboard_Click(object sender, EventArgs e) {
+            if (scoreboardForm.Visible) {
+                scoreboardForm.Hide();
+            } else {
+                scoreboardForm.Show();
+            }
         }
     }
 }

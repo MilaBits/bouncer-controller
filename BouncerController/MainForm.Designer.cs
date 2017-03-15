@@ -109,7 +109,7 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.tbLogInput = new System.Windows.Forms.TextBox();
             this.btnClearLog = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnScoreboard = new System.Windows.Forms.Button();
             this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
             this.lbScanning = new System.Windows.Forms.Label();
@@ -326,7 +326,7 @@
             // 
             this.btnConnect.Location = new System.Drawing.Point(196, 9);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(86, 24);
+            this.btnConnect.Size = new System.Drawing.Size(101, 24);
             this.btnConnect.TabIndex = 10;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -1037,15 +1037,16 @@
             this.btnClearLog.UseVisualStyleBackColor = true;
             this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
             // 
-            // button4
+            // btnScoreboard
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(562, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(98, 23);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Scoreboard";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnScoreboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScoreboard.Location = new System.Drawing.Point(562, 10);
+            this.btnScoreboard.Name = "btnScoreboard";
+            this.btnScoreboard.Size = new System.Drawing.Size(98, 23);
+            this.btnScoreboard.TabIndex = 48;
+            this.btnScoreboard.Text = "Scoreboard";
+            this.btnScoreboard.UseVisualStyleBackColor = true;
+            this.btnScoreboard.Click += new System.EventHandler(this.btnScoreboard_Click);
             // 
             // messageTimer
             // 
@@ -1066,7 +1067,7 @@
             // lbScanning
             // 
             this.lbScanning.AutoSize = true;
-            this.lbScanning.Location = new System.Drawing.Point(288, 13);
+            this.lbScanning.Location = new System.Drawing.Point(303, 13);
             this.lbScanning.Name = "lbScanning";
             this.lbScanning.Size = new System.Drawing.Size(79, 17);
             this.lbScanning.TabIndex = 50;
@@ -1106,7 +1107,7 @@
             this.Controls.Add(this.Settings);
             this.Controls.Add(this.lbScanning);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnScoreboard);
             this.Controls.Add(this.btnApplySettings);
             this.Controls.Add(this.lbLog);
             this.Controls.Add(this.btnSend);
@@ -1246,7 +1247,7 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox tbLogInput;
         private System.Windows.Forms.Button btnClearLog;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnScoreboard;
         private System.Windows.Forms.Timer messageTimer;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label lbScanning;
