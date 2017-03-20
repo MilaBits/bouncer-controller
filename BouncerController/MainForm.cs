@@ -112,7 +112,7 @@ namespace BouncerController {
                             lbLog.SelectedIndex = lbLog.Items.Count - 1;
                             break;
                         case "Tilt":
-                            tbTilt.Text = message.ValueAsNumber.ToString();
+                            tbTilt1.Text = message.ValueAsNumber.ToString();
                             break;
                         case "Speed":
                             tbSpeed.Text = message.ValueAsNumber.ToString();

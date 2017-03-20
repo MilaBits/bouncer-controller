@@ -58,6 +58,9 @@
             // 
             // lbScoreA
             // 
+            this.lbScoreA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbScoreA.AutoSize = true;
             this.lbScoreA.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F);
             this.lbScoreA.Location = new System.Drawing.Point(137, 219);
@@ -68,6 +71,9 @@
             // 
             // lbScoreB
             // 
+            this.lbScoreB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbScoreB.AutoSize = true;
             this.lbScoreB.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F);
             this.lbScoreB.Location = new System.Drawing.Point(440, 219);
@@ -78,6 +84,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label2.Location = new System.Drawing.Point(84, 161);
@@ -88,6 +97,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label1.Location = new System.Drawing.Point(387, 161);

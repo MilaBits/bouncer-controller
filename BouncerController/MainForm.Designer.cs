@@ -27,7 +27,7 @@
             this.btnRandomTilt = new System.Windows.Forms.Button();
             this.btnDefaultTilt = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nudTilt = new System.Windows.Forms.NumericUpDown();
+            this.nudTilt1 = new System.Windows.Forms.NumericUpDown();
             this.cbA1 = new System.Windows.Forms.CheckBox();
             this.cbA2 = new System.Windows.Forms.CheckBox();
             this.cbA3 = new System.Windows.Forms.CheckBox();
@@ -98,7 +98,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.tbSpeed = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbTilt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
@@ -115,8 +114,15 @@
             this.lbScanning = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.GroupBox();
             this.cbControlMode = new System.Windows.Forms.CheckBox();
+            this.nudTilt2 = new System.Windows.Forms.NumericUpDown();
+            this.nudTilt4 = new System.Windows.Forms.NumericUpDown();
+            this.nudTilt3 = new System.Windows.Forms.NumericUpDown();
+            this.tbTilt1 = new System.Windows.Forms.TextBox();
+            this.tbTilt2 = new System.Windows.Forms.TextBox();
+            this.tbTilt4 = new System.Windows.Forms.TextBox();
+            this.tbTilt3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTilt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt1)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -135,29 +141,35 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).BeginInit();
             this.Settings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRandomTilt
             // 
-            this.btnRandomTilt.Location = new System.Drawing.Point(92, 50);
+            this.btnRandomTilt.Location = new System.Drawing.Point(118, 50);
             this.btnRandomTilt.Name = "btnRandomTilt";
-            this.btnRandomTilt.Size = new System.Drawing.Size(113, 23);
+            this.btnRandomTilt.Size = new System.Drawing.Size(92, 23);
             this.btnRandomTilt.TabIndex = 2;
             this.btnRandomTilt.Text = "Random";
             this.btnRandomTilt.UseVisualStyleBackColor = true;
             // 
             // btnDefaultTilt
             // 
-            this.btnDefaultTilt.Location = new System.Drawing.Point(92, 21);
+            this.btnDefaultTilt.Location = new System.Drawing.Point(118, 18);
             this.btnDefaultTilt.Name = "btnDefaultTilt";
-            this.btnDefaultTilt.Size = new System.Drawing.Size(113, 24);
+            this.btnDefaultTilt.Size = new System.Drawing.Size(92, 24);
             this.btnDefaultTilt.TabIndex = 1;
             this.btnDefaultTilt.Text = "Default (..)";
             this.btnDefaultTilt.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.nudTilt);
+            this.groupBox1.Controls.Add(this.nudTilt4);
+            this.groupBox1.Controls.Add(this.nudTilt3);
+            this.groupBox1.Controls.Add(this.nudTilt2);
+            this.groupBox1.Controls.Add(this.nudTilt1);
             this.groupBox1.Controls.Add(this.btnDefaultTilt);
             this.groupBox1.Controls.Add(this.btnRandomTilt);
             this.groupBox1.Location = new System.Drawing.Point(6, 21);
@@ -167,13 +179,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Field Tilt";
             // 
-            // nudTilt
+            // nudTilt1
             // 
-            this.nudTilt.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.nudTilt.Location = new System.Drawing.Point(6, 21);
-            this.nudTilt.Name = "nudTilt";
-            this.nudTilt.Size = new System.Drawing.Size(80, 53);
-            this.nudTilt.TabIndex = 20;
+            this.nudTilt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.nudTilt1.Location = new System.Drawing.Point(6, 20);
+            this.nudTilt1.Name = "nudTilt1";
+            this.nudTilt1.Size = new System.Drawing.Size(50, 22);
+            this.nudTilt1.TabIndex = 20;
+            this.nudTilt1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // cbA1
             // 
@@ -497,12 +514,15 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.tbTilt4);
+            this.groupBox3.Controls.Add(this.tbTilt3);
+            this.groupBox3.Controls.Add(this.tbTilt2);
+            this.groupBox3.Controls.Add(this.tbTilt1);
             this.groupBox3.Controls.Add(this.groupBox8);
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.tbSpeed);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.tbTilt);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(246, 49);
             this.groupBox3.Name = "groupBox3";
@@ -927,15 +947,6 @@
             this.label2.TabIndex = 42;
             this.label2.Text = "Game Speed";
             // 
-            // tbTilt
-            // 
-            this.tbTilt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTilt.Location = new System.Drawing.Point(6, 44);
-            this.tbTilt.Name = "tbTilt";
-            this.tbTilt.ReadOnly = true;
-            this.tbTilt.Size = new System.Drawing.Size(201, 22);
-            this.tbTilt.TabIndex = 39;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -962,23 +973,23 @@
             this.nudSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.nudSpeed.Location = new System.Drawing.Point(6, 21);
             this.nudSpeed.Name = "nudSpeed";
-            this.nudSpeed.Size = new System.Drawing.Size(80, 53);
+            this.nudSpeed.Size = new System.Drawing.Size(106, 53);
             this.nudSpeed.TabIndex = 20;
             // 
             // btnDefaultSpeed
             // 
-            this.btnDefaultSpeed.Location = new System.Drawing.Point(92, 21);
+            this.btnDefaultSpeed.Location = new System.Drawing.Point(118, 21);
             this.btnDefaultSpeed.Name = "btnDefaultSpeed";
-            this.btnDefaultSpeed.Size = new System.Drawing.Size(113, 24);
+            this.btnDefaultSpeed.Size = new System.Drawing.Size(92, 24);
             this.btnDefaultSpeed.TabIndex = 1;
             this.btnDefaultSpeed.Text = "Default (..)";
             this.btnDefaultSpeed.UseVisualStyleBackColor = true;
             // 
             // nudRandomSpeed
             // 
-            this.nudRandomSpeed.Location = new System.Drawing.Point(92, 50);
+            this.nudRandomSpeed.Location = new System.Drawing.Point(118, 50);
             this.nudRandomSpeed.Name = "nudRandomSpeed";
-            this.nudRandomSpeed.Size = new System.Drawing.Size(113, 23);
+            this.nudRandomSpeed.Size = new System.Drawing.Size(92, 23);
             this.nudRandomSpeed.TabIndex = 2;
             this.nudRandomSpeed.Text = "Random";
             this.nudRandomSpeed.UseVisualStyleBackColor = true;
@@ -1098,6 +1109,81 @@
             this.cbControlMode.UseVisualStyleBackColor = true;
             this.cbControlMode.CheckedChanged += new System.EventHandler(this.cbControlMode_CheckedChanged);
             // 
+            // nudTilt2
+            // 
+            this.nudTilt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.nudTilt2.Location = new System.Drawing.Point(62, 20);
+            this.nudTilt2.Name = "nudTilt2";
+            this.nudTilt2.Size = new System.Drawing.Size(50, 22);
+            this.nudTilt2.TabIndex = 21;
+            this.nudTilt2.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // nudTilt4
+            // 
+            this.nudTilt4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.nudTilt4.Location = new System.Drawing.Point(62, 50);
+            this.nudTilt4.Name = "nudTilt4";
+            this.nudTilt4.Size = new System.Drawing.Size(50, 22);
+            this.nudTilt4.TabIndex = 23;
+            this.nudTilt4.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // nudTilt3
+            // 
+            this.nudTilt3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.nudTilt3.Location = new System.Drawing.Point(6, 50);
+            this.nudTilt3.Name = "nudTilt3";
+            this.nudTilt3.Size = new System.Drawing.Size(50, 22);
+            this.nudTilt3.TabIndex = 22;
+            this.nudTilt3.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // tbTilt1
+            // 
+            this.tbTilt1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt1.Location = new System.Drawing.Point(7, 41);
+            this.tbTilt1.Name = "tbTilt1";
+            this.tbTilt1.ReadOnly = true;
+            this.tbTilt1.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt1.TabIndex = 50;
+            // 
+            // tbTilt2
+            // 
+            this.tbTilt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt2.Location = new System.Drawing.Point(108, 41);
+            this.tbTilt2.Name = "tbTilt2";
+            this.tbTilt2.ReadOnly = true;
+            this.tbTilt2.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt2.TabIndex = 51;
+            // 
+            // tbTilt4
+            // 
+            this.tbTilt4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt4.Location = new System.Drawing.Point(108, 72);
+            this.tbTilt4.Name = "tbTilt4";
+            this.tbTilt4.ReadOnly = true;
+            this.tbTilt4.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt4.TabIndex = 53;
+            // 
+            // tbTilt3
+            // 
+            this.tbTilt3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt3.Location = new System.Drawing.Point(7, 72);
+            this.tbTilt3.Name = "tbTilt3";
+            this.tbTilt3.ReadOnly = true;
+            this.tbTilt3.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt3.TabIndex = 52;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1124,7 +1210,7 @@
             this.Move += new System.EventHandler(this.MainForm_Move);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudTilt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt1)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1156,6 +1242,9 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).EndInit();
             this.Settings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTilt3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1182,7 +1271,7 @@
         private System.Windows.Forms.ComboBox cbbComPorts;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.NumericUpDown nudTilt;
+        private System.Windows.Forms.NumericUpDown nudTilt1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnToggleAllB;
@@ -1231,7 +1320,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnApplySettings;
-        private System.Windows.Forms.TextBox tbTilt;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ProgressBar pbFieldBattery;
         private System.Windows.Forms.Label label15;
@@ -1253,6 +1341,13 @@
         private System.Windows.Forms.Label lbScanning;
         private System.Windows.Forms.GroupBox Settings;
         private System.Windows.Forms.CheckBox cbControlMode;
+        private System.Windows.Forms.NumericUpDown nudTilt2;
+        private System.Windows.Forms.NumericUpDown nudTilt4;
+        private System.Windows.Forms.NumericUpDown nudTilt3;
+        private System.Windows.Forms.TextBox tbTilt2;
+        private System.Windows.Forms.TextBox tbTilt1;
+        private System.Windows.Forms.TextBox tbTilt4;
+        private System.Windows.Forms.TextBox tbTilt3;
     }
 }
 
