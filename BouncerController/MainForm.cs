@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EV3MessengerLib;
 using System.Management;
@@ -38,6 +30,7 @@ namespace BouncerController {
             //{
             //    cbbComPorts.Items.Add(portName);
             //}
+            
         }
 
         private void cbbComPorts_Click(object sender, EventArgs e) {
@@ -51,7 +44,7 @@ namespace BouncerController {
                 if (ev3Messenger.Connect(port)) {
                     UpdateButtonsAndConnectionInfo();
                     lbLog.Items.Clear();
-                    //messageReceiveTimer.Start();
+                    messageTimer.Start();
                 } else {
                     MessageBox.Show("Failed to connect to serial port '" + port + "'.\n"
                         + "Is your EV3 connected to that serial port? Or is it using another one?");
