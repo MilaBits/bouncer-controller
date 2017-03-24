@@ -6,9 +6,9 @@ using System.Windows.Forms;
 using MonoBrick.EV3;
 
 namespace MonoBrickTest {
-    public partial class Form1 : Form {
+    public partial class MonoBrickTestForm : Form {
 
-        public Form1() {
+        public MonoBrickTestForm() {
             InitializeComponent();
         }
 

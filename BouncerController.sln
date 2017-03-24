@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncerController", "Bounce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoBrickTest", "MonoBrickTest\MonoBrickTest.csproj", "{A38314D3-3D83-4631-8AE0-D15DD30DE18B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoTest", "Arduino Test\ArduinoTest.csproj", "{472C78EE-9B53-4F49-9582-DE7E60AAC179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A38314D3-3D83-4631-8AE0-D15DD30DE18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A38314D3-3D83-4631-8AE0-D15DD30DE18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A38314D3-3D83-4631-8AE0-D15DD30DE18B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

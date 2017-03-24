@@ -1,5 +1,5 @@
 ﻿namespace MonoBrickTest {
-    partial class Form1 {
+    partial class MonoBrickTestForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -118,11 +118,11 @@
             this.btnSendByte.UseVisualStyleBackColor = true;
             this.btnSendByte.Click += new System.EventHandler(this.btnSendByte_Click);
             // 
-            // Form1
+            // MonoBrickTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 497);
+            this.ClientSize = new System.Drawing.Size(675, 173);
             this.Controls.Add(this.btnSendByte);
             this.Controls.Add(this.tbSerial);
             this.Controls.Add(this.label4);
@@ -133,8 +133,8 @@
             this.Controls.Add(this.tbIP);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lbxInbox);
-            this.Name = "Form1";
-            this.Text = "x";
+            this.Name = "MonoBrickTestForm";
+            this.Text = "MonoBrick Test";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
