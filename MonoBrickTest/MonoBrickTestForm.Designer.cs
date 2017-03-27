@@ -39,28 +39,28 @@
             // 
             this.lbxInbox.FormattingEnabled = true;
             this.lbxInbox.ItemHeight = 16;
-            this.lbxInbox.Location = new System.Drawing.Point(12, 12);
+            this.lbxInbox.Location = new System.Drawing.Point(12, 44);
             this.lbxInbox.Name = "lbxInbox";
-            this.lbxInbox.Size = new System.Drawing.Size(651, 100);
+            this.lbxInbox.Size = new System.Drawing.Size(651, 116);
             this.lbxInbox.TabIndex = 0;
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(12, 139);
+            this.tbName.Location = new System.Drawing.Point(12, 187);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(170, 22);
             this.tbName.TabIndex = 1;
             // 
             // tbIP
             // 
-            this.tbIP.Location = new System.Drawing.Point(330, 139);
+            this.tbIP.Location = new System.Drawing.Point(330, 187);
             this.tbIP.Name = "tbIP";
             this.tbIP.Size = new System.Drawing.Size(140, 22);
             this.tbIP.TabIndex = 2;
             // 
             // tbPort
             // 
-            this.tbPort.Location = new System.Drawing.Point(476, 139);
+            this.tbPort.Location = new System.Drawing.Point(476, 187);
             this.tbPort.Name = "tbPort";
             this.tbPort.Size = new System.Drawing.Size(60, 22);
             this.tbPort.TabIndex = 3;
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 119);
+            this.label1.Location = new System.Drawing.Point(12, 167);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 4;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(327, 119);
+            this.label2.Location = new System.Drawing.Point(327, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 5;
@@ -86,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(473, 119);
+            this.label3.Location = new System.Drawing.Point(473, 167);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 17);
             this.label3.TabIndex = 6;
@@ -95,7 +95,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(188, 119);
+            this.label4.Location = new System.Drawing.Point(188, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 17);
             this.label4.TabIndex = 7;
@@ -103,14 +103,14 @@
             // 
             // tbSerial
             // 
-            this.tbSerial.Location = new System.Drawing.Point(188, 139);
+            this.tbSerial.Location = new System.Drawing.Point(188, 187);
             this.tbSerial.Name = "tbSerial";
             this.tbSerial.Size = new System.Drawing.Size(136, 22);
             this.tbSerial.TabIndex = 8;
             // 
             // btnSendByte
             // 
-            this.btnSendByte.Location = new System.Drawing.Point(542, 139);
+            this.btnSendByte.Location = new System.Drawing.Point(542, 187);
             this.btnSendByte.Name = "btnSendByte";
             this.btnSendByte.Size = new System.Drawing.Size(121, 23);
             this.btnSendByte.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 173);
+            this.ClientSize = new System.Drawing.Size(675, 221);
             this.Controls.Add(this.btnSendByte);
             this.Controls.Add(this.tbSerial);
             this.Controls.Add(this.label4);
