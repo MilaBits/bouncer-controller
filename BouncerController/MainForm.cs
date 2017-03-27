@@ -9,6 +9,8 @@ namespace BouncerController {
         private Form controlForm;
         private Form scoreboardForm;
 
+        private Timer messageReceiveTimer;
+
         public MainForm() {
             InitializeComponent();
             ev3Messenger = new EV3Messenger();
@@ -30,7 +32,7 @@ namespace BouncerController {
             //{
             //    cbbComPorts.Items.Add(portName);
             //}
-            
+
         }
 
         private void cbbComPorts_Click(object sender, EventArgs e) {
@@ -66,12 +68,12 @@ namespace BouncerController {
                 btnConnect.Text = "Disconnect";
                 tslConnection.Text = "Connected: " + ev3Messenger.Port;
                 tspConnection.Value = 100;
-                messageTimer.Enabled = true;
+                messageTimer.Start();
             } else {
                 btnConnect.Text = "Connect";
                 tslConnection.Text = "Not Connected";
                 tspConnection.Value = 0;
-                messageTimer.Enabled = false;
+                messageTimer.Stop();
             }
         }
 
@@ -113,13 +115,19 @@ namespace BouncerController {
                     }
                 }
             }
+            if (Convert.ToInt16(lbTimer.Text) < 10) {
+                lbTimer.Text = (Convert.ToInt16(lbTimer.Text) + 1).ToString();
+            } else {
+                lbTimer.Text = "0";
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e) {
             if (ev3Messenger.IsConnected) {
                 string[] words = tbLogInput.Text.Split(':');
                 if (words.Length == 2) {
-                    ev3Messenger.SendMessage(words[0], words[1]);
+                    //ev3Messenger.SendMessage(words[0], words[1]);
+                    ev3Messenger.SendMessage("abc", "test");
                 } else {
                     lbLog.Items.Add("Wrong format, use <mailbox:message>");
                 }
@@ -161,6 +169,10 @@ namespace BouncerController {
             } else {
                 scoreboardForm.Show();
             }
+        }
+
+        private void btnDefaultTilt_Click(object sender, EventArgs e) {
+            ev3Messenger.SendMessage("abc", "test");
         }
     }
 }

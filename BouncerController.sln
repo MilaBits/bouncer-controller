@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoBrickTest", "MonoBrickT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoTest", "Arduino Test\ArduinoTest.csproj", "{472C78EE-9B53-4F49-9582-DE7E60AAC179}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EV3MessengerTest", "EV3MessengerTest\EV3MessengerTest.csproj", "{E04C4D6D-1CF3-446A-B130-C739DB607623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Release|Any CPU.Build.0 = Release|Any CPU
 		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Release|x86.ActiveCfg = Release|Any CPU
 		{472C78EE-9B53-4F49-9582-DE7E60AAC179}.Release|x86.Build.0 = Release|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Debug|x86.Build.0 = Debug|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Release|x86.ActiveCfg = Release|Any CPU
+		{E04C4D6D-1CF3-446A-B130-C739DB607623}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
