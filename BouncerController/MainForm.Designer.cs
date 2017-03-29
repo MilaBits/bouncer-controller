@@ -62,11 +62,10 @@
             this.pnB2 = new System.Windows.Forms.Panel();
             this.pnB1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tbTilt4 = new System.Windows.Forms.TextBox();
             this.tbTilt3 = new System.Windows.Forms.TextBox();
-            this.tbTilt2 = new System.Windows.Forms.TextBox();
             this.tbTilt1 = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.pbFieldBattery = new System.Windows.Forms.ProgressBar();
             this.label15 = new System.Windows.Forms.Label();
             this.pbSensorsB = new System.Windows.Forms.ProgressBar();
@@ -174,6 +173,7 @@
             this.groupBox1.Controls.Add(this.nudTilt1);
             this.groupBox1.Controls.Add(this.btnDefaultTilt);
             this.groupBox1.Controls.Add(this.btnRandomTilt);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(6, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 82);
@@ -555,9 +555,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.tbTilt4);
             this.groupBox3.Controls.Add(this.tbTilt3);
-            this.groupBox3.Controls.Add(this.tbTilt2);
             this.groupBox3.Controls.Add(this.tbTilt1);
             this.groupBox3.Controls.Add(this.groupBox8);
             this.groupBox3.Controls.Add(this.groupBox6);
@@ -572,40 +570,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
             // 
-            // tbTilt4
-            // 
-            this.tbTilt4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTilt4.Location = new System.Drawing.Point(108, 72);
-            this.tbTilt4.Name = "tbTilt4";
-            this.tbTilt4.ReadOnly = true;
-            this.tbTilt4.Size = new System.Drawing.Size(97, 22);
-            this.tbTilt4.TabIndex = 53;
-            // 
             // tbTilt3
             // 
             this.tbTilt3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt3.Enabled = false;
             this.tbTilt3.Location = new System.Drawing.Point(7, 72);
             this.tbTilt3.Name = "tbTilt3";
             this.tbTilt3.ReadOnly = true;
-            this.tbTilt3.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt3.Size = new System.Drawing.Size(200, 22);
             this.tbTilt3.TabIndex = 52;
-            // 
-            // tbTilt2
-            // 
-            this.tbTilt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTilt2.Location = new System.Drawing.Point(108, 41);
-            this.tbTilt2.Name = "tbTilt2";
-            this.tbTilt2.ReadOnly = true;
-            this.tbTilt2.Size = new System.Drawing.Size(97, 22);
-            this.tbTilt2.TabIndex = 51;
             // 
             // tbTilt1
             // 
             this.tbTilt1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTilt1.Enabled = false;
             this.tbTilt1.Location = new System.Drawing.Point(7, 41);
             this.tbTilt1.Name = "tbTilt1";
             this.tbTilt1.ReadOnly = true;
-            this.tbTilt1.Size = new System.Drawing.Size(97, 22);
+            this.tbTilt1.Size = new System.Drawing.Size(200, 22);
             this.tbTilt1.TabIndex = 50;
             // 
             // groupBox8
@@ -628,6 +610,17 @@
             this.groupBox8.TabIndex = 49;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Battery Levels";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReset.Location = new System.Drawing.Point(165, 600);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 53;
+            this.btnReset.Text = "reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // pbFieldBattery
             // 
@@ -1200,6 +1193,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 655);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lbTimer);
             this.Controls.Add(this.cbControlMode);
             this.Controls.Add(this.Settings);
@@ -1356,11 +1350,10 @@
         private System.Windows.Forms.NumericUpDown nudTilt2;
         private System.Windows.Forms.NumericUpDown nudTilt4;
         private System.Windows.Forms.NumericUpDown nudTilt3;
-        private System.Windows.Forms.TextBox tbTilt2;
         private System.Windows.Forms.TextBox tbTilt1;
-        private System.Windows.Forms.TextBox tbTilt4;
         private System.Windows.Forms.TextBox tbTilt3;
         private System.Windows.Forms.Label lbTimer;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

@@ -27,7 +27,7 @@ namespace EV3MessengerTest {
         private void button1_Click(object sender, EventArgs e) {
             if (!ev3Messenger.IsConnected)
             {
-                ev3Messenger.Connect(comboBox1.Text);
+                ev3Messenger.Connect(comboBox1.Text.ToUpper());
                 flowLayoutPanel1.BackColor = Color.Green;
             }
             else

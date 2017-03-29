@@ -174,5 +174,10 @@ namespace BouncerController {
         private void btnDefaultTilt_Click(object sender, EventArgs e) {
             ev3Messenger.SendMessage("abc", "test");
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ev3Messenger.SendMessage("abc", "reset");
+        }
     }
 }

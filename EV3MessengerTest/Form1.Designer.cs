@@ -41,7 +41,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(139, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 23);
+            this.button1.Size = new System.Drawing.Size(85, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Connect";
             this.button1.UseVisualStyleBackColor = true;
@@ -49,26 +49,27 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(139, 42);
+            this.button2.Location = new System.Drawing.Point(12, 42);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 53);
+            this.button2.Size = new System.Drawing.Size(258, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Send";
+            this.button2.Text = "Send: \"test\",\"test\"";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 42);
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Red;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(230, 13);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(121, 53);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(40, 23);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 107);
+            this.ClientSize = new System.Drawing.Size(280, 77);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

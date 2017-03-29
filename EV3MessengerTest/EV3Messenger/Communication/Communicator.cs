@@ -98,6 +98,8 @@ namespace EV3MessengerLib.Communication {
                         serialPort.Open();
                         serialPort.DiscardInBuffer();
                         serialPort.DiscardOutBuffer();
+                        serialPort.ReadTimeout = 500;
+                        serialPort.WriteTimeout = 500;
                         return true;
                     } catch (Exception e) // Very dirty :)
                       {
