@@ -45,8 +45,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tspConnection = new System.Windows.Forms.ToolStripProgressBar();
             this.tslConnection = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cbbComPorts = new System.Windows.Forms.ComboBox();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -64,18 +62,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tbTilt3 = new System.Windows.Forms.TextBox();
             this.tbTilt1 = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.pbFieldBattery = new System.Windows.Forms.ProgressBar();
-            this.label15 = new System.Windows.Forms.Label();
-            this.pbSensorsB = new System.Windows.Forms.ProgressBar();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pbSensorsA = new System.Windows.Forms.ProgressBar();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pbBouncerBatteryB = new System.Windows.Forms.ProgressBar();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pbBouncerBaterryA = new System.Windows.Forms.ProgressBar();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -105,6 +91,7 @@
             this.tbSpeed = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.btnDefaultSpeed = new System.Windows.Forms.Button();
@@ -117,10 +104,38 @@
             this.btnScoreboard = new System.Windows.Forms.Button();
             this.messageTimer = new System.Windows.Forms.Timer(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.lbScanning = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.GroupBox();
-            this.cbControlMode = new System.Windows.Forms.CheckBox();
             this.lbTimer = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.pnlArduinoBStatus = new System.Windows.Forms.Panel();
+            this.pnlArduinoAStatus = new System.Windows.Forms.Panel();
+            this.pnlSensorsBStatus = new System.Windows.Forms.Panel();
+            this.pnlSensorsAStatus = new System.Windows.Forms.Panel();
+            this.pnlBouncerBStatus = new System.Windows.Forms.Panel();
+            this.pnlBouncerAStatus = new System.Windows.Forms.Panel();
+            this.btnConnectArduinoA = new System.Windows.Forms.Button();
+            this.btnConnectSensorsA = new System.Windows.Forms.Button();
+            this.cbbArduinoAComs = new System.Windows.Forms.ComboBox();
+            this.btnConnectSensorsB = new System.Windows.Forms.Button();
+            this.cbbSensorsAComs = new System.Windows.Forms.ComboBox();
+            this.cbbSensorsBComs = new System.Windows.Forms.ComboBox();
+            this.btnConnectBouncerB = new System.Windows.Forms.Button();
+            this.cbbBouncerBComs = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pnlFieldStatus = new System.Windows.Forms.Panel();
+            this.cbbArduinoBComs = new System.Windows.Forms.ComboBox();
+            this.btnConnectArduinoB = new System.Windows.Forms.Button();
+            this.btnConnectField = new System.Windows.Forms.Button();
+            this.cbbFieldComs = new System.Windows.Forms.ComboBox();
+            this.btnConnectBouncerA = new System.Windows.Forms.Button();
+            this.cbbBouncerAComs = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cbControlMode = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt3)).BeginInit();
@@ -130,7 +145,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -144,6 +158,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).BeginInit();
             this.Settings.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRandomTilt
@@ -350,10 +365,10 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tspConnection,
             this.tslConnection});
-            this.statusStrip.Location = new System.Drawing.Point(0, 627);
+            this.statusStrip.Location = new System.Drawing.Point(0, 717);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.statusStrip.Size = new System.Drawing.Size(672, 28);
+            this.statusStrip.Size = new System.Drawing.Size(842, 28);
             this.statusStrip.TabIndex = 18;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -369,35 +384,14 @@
             this.tslConnection.Size = new System.Drawing.Size(109, 23);
             this.tslConnection.Text = "Not Connected";
             // 
-            // cbbComPorts
-            // 
-            this.cbbComPorts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbComPorts.FormattingEnabled = true;
-            this.cbbComPorts.Location = new System.Drawing.Point(104, 10);
-            this.cbbComPorts.Name = "cbbComPorts";
-            this.cbbComPorts.Size = new System.Drawing.Size(86, 24);
-            this.cbbComPorts.TabIndex = 19;
-            this.cbbComPorts.SelectedIndexChanged += new System.EventHandler(this.cbbComPorts_SelectedIndexChanged);
-            this.cbbComPorts.Click += new System.EventHandler(this.cbbComPorts_Click);
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(196, 9);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(101, 24);
-            this.btnConnect.TabIndex = 10;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 42);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 45);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(678, 1);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(848, 1);
             this.flowLayoutPanel3.TabIndex = 17;
             // 
             // groupBox4
@@ -553,22 +547,19 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tbTilt3);
             this.groupBox3.Controls.Add(this.tbTilt1);
-            this.groupBox3.Controls.Add(this.groupBox8);
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.tbSpeed);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(246, 49);
+            this.groupBox3.Location = new System.Drawing.Point(246, 52);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(414, 426);
+            this.groupBox3.Size = new System.Drawing.Size(218, 435);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Status";
+            this.groupBox3.Text = "Game Status";
             // 
             // tbTilt3
             // 
@@ -589,133 +580,6 @@
             this.tbTilt1.ReadOnly = true;
             this.tbTilt1.Size = new System.Drawing.Size(200, 22);
             this.tbTilt1.TabIndex = 50;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox8.Controls.Add(this.pbFieldBattery);
-            this.groupBox8.Controls.Add(this.label15);
-            this.groupBox8.Controls.Add(this.pbSensorsB);
-            this.groupBox8.Controls.Add(this.label13);
-            this.groupBox8.Controls.Add(this.pbSensorsA);
-            this.groupBox8.Controls.Add(this.label14);
-            this.groupBox8.Controls.Add(this.pbBouncerBatteryB);
-            this.groupBox8.Controls.Add(this.label12);
-            this.groupBox8.Controls.Add(this.pbBouncerBaterryA);
-            this.groupBox8.Controls.Add(this.label11);
-            this.groupBox8.Location = new System.Drawing.Point(213, 17);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(193, 392);
-            this.groupBox8.TabIndex = 49;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Battery Levels";
-            // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReset.Location = new System.Drawing.Point(165, 600);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 53;
-            this.btnReset.Text = "reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // pbFieldBattery
-            // 
-            this.pbFieldBattery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbFieldBattery.Location = new System.Drawing.Point(6, 26);
-            this.pbFieldBattery.Name = "pbFieldBattery";
-            this.pbFieldBattery.Size = new System.Drawing.Size(100, 23);
-            this.pbFieldBattery.TabIndex = 55;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(113, 29);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 17);
-            this.label15.TabIndex = 56;
-            this.label15.Text = "Field";
-            // 
-            // pbSensorsB
-            // 
-            this.pbSensorsB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbSensorsB.Location = new System.Drawing.Point(7, 340);
-            this.pbSensorsB.Name = "pbSensorsB";
-            this.pbSensorsB.Size = new System.Drawing.Size(100, 23);
-            this.pbSensorsB.TabIndex = 53;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(114, 342);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 17);
-            this.label13.TabIndex = 54;
-            this.label13.Text = "Sensors B";
-            // 
-            // pbSensorsA
-            // 
-            this.pbSensorsA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbSensorsA.Location = new System.Drawing.Point(5, 228);
-            this.pbSensorsA.Name = "pbSensorsA";
-            this.pbSensorsA.Size = new System.Drawing.Size(100, 23);
-            this.pbSensorsA.TabIndex = 51;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(114, 231);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 17);
-            this.label14.TabIndex = 52;
-            this.label14.Text = "Sensors A";
-            // 
-            // pbBouncerBatteryB
-            // 
-            this.pbBouncerBatteryB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbBouncerBatteryB.Location = new System.Drawing.Point(7, 143);
-            this.pbBouncerBatteryB.Name = "pbBouncerBatteryB";
-            this.pbBouncerBatteryB.Size = new System.Drawing.Size(100, 23);
-            this.pbBouncerBatteryB.TabIndex = 49;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(113, 145);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 17);
-            this.label12.TabIndex = 50;
-            this.label12.Text = "Bouncer B";
-            // 
-            // pbBouncerBaterryA
-            // 
-            this.pbBouncerBaterryA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbBouncerBaterryA.Location = new System.Drawing.Point(7, 115);
-            this.pbBouncerBaterryA.Name = "pbBouncerBaterryA";
-            this.pbBouncerBaterryA.Size = new System.Drawing.Size(100, 23);
-            this.pbBouncerBaterryA.TabIndex = 47;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(113, 117);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 17);
-            this.label11.TabIndex = 48;
-            this.label11.Text = "Bouncer A";
             // 
             // groupBox6
             // 
@@ -1026,6 +890,17 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Field Tilt";
             // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReset.Location = new System.Drawing.Point(161, 665);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 53;
+            this.btnReset.Text = "reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.nudSpeed);
@@ -1067,9 +942,9 @@
             // btnApplySettings
             // 
             this.btnApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplySettings.Location = new System.Drawing.Point(12, 481);
+            this.btnApplySettings.Location = new System.Drawing.Point(12, 495);
             this.btnApplySettings.Name = "btnApplySettings";
-            this.btnApplySettings.Size = new System.Drawing.Size(228, 116);
+            this.btnApplySettings.Size = new System.Drawing.Size(224, 164);
             this.btnApplySettings.TabIndex = 37;
             this.btnApplySettings.Text = "Apply";
             this.btnApplySettings.UseVisualStyleBackColor = true;
@@ -1081,15 +956,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLog.FormattingEnabled = true;
             this.lbLog.ItemHeight = 16;
-            this.lbLog.Location = new System.Drawing.Point(246, 481);
+            this.lbLog.Location = new System.Drawing.Point(246, 495);
             this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(414, 116);
+            this.lbLog.Size = new System.Drawing.Size(584, 164);
             this.lbLog.TabIndex = 46;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(481, 601);
+            this.btnSend.Location = new System.Drawing.Point(651, 666);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 45;
@@ -1102,15 +977,15 @@
             this.tbLogInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbLogInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbLogInput.Location = new System.Drawing.Point(246, 601);
+            this.tbLogInput.Location = new System.Drawing.Point(246, 666);
             this.tbLogInput.Name = "tbLogInput";
-            this.tbLogInput.Size = new System.Drawing.Size(229, 22);
+            this.tbLogInput.Size = new System.Drawing.Size(399, 22);
             this.tbLogInput.TabIndex = 43;
             // 
             // btnClearLog
             // 
             this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearLog.Location = new System.Drawing.Point(562, 601);
+            this.btnClearLog.Location = new System.Drawing.Point(732, 665);
             this.btnClearLog.Name = "btnClearLog";
             this.btnClearLog.Size = new System.Drawing.Size(98, 23);
             this.btnClearLog.TabIndex = 44;
@@ -1121,7 +996,7 @@
             // btnScoreboard
             // 
             this.btnScoreboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnScoreboard.Location = new System.Drawing.Point(562, 10);
+            this.btnScoreboard.Location = new System.Drawing.Point(732, 13);
             this.btnScoreboard.Name = "btnScoreboard";
             this.btnScoreboard.Size = new System.Drawing.Size(98, 23);
             this.btnScoreboard.TabIndex = 48;
@@ -1136,24 +1011,16 @@
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRefresh.Location = new System.Drawing.Point(12, 9);
+            this.btnRefresh.Location = new System.Drawing.Point(486, 12);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(86, 24);
+            this.btnRefresh.Size = new System.Drawing.Size(118, 24);
             this.btnRefresh.TabIndex = 49;
-            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Text = "Refresh Ports";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // lbScanning
-            // 
-            this.lbScanning.AutoSize = true;
-            this.lbScanning.Location = new System.Drawing.Point(303, 13);
-            this.lbScanning.Name = "lbScanning";
-            this.lbScanning.Size = new System.Drawing.Size(79, 17);
-            this.lbScanning.TabIndex = 50;
-            this.lbScanning.Text = "Scanning...";
-            this.lbScanning.Visible = false;
             // 
             // Settings
             // 
@@ -1161,17 +1028,340 @@
             this.Settings.Controls.Add(this.groupBox4);
             this.Settings.Controls.Add(this.groupBox7);
             this.Settings.Controls.Add(this.groupBox2);
-            this.Settings.Location = new System.Drawing.Point(12, 49);
+            this.Settings.Location = new System.Drawing.Point(12, 52);
             this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(228, 426);
+            this.Settings.Size = new System.Drawing.Size(228, 435);
             this.Settings.TabIndex = 51;
             this.Settings.TabStop = false;
             this.Settings.Text = "Settings";
             // 
+            // lbTimer
+            // 
+            this.lbTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbTimer.AutoSize = true;
+            this.lbTimer.Location = new System.Drawing.Point(11, 683);
+            this.lbTimer.Name = "lbTimer";
+            this.lbTimer.Size = new System.Drawing.Size(16, 17);
+            this.lbTimer.TabIndex = 52;
+            this.lbTimer.Text = "0";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.pnlArduinoBStatus);
+            this.groupBox9.Controls.Add(this.pnlArduinoAStatus);
+            this.groupBox9.Controls.Add(this.pnlSensorsBStatus);
+            this.groupBox9.Controls.Add(this.pnlSensorsAStatus);
+            this.groupBox9.Controls.Add(this.pnlBouncerBStatus);
+            this.groupBox9.Controls.Add(this.pnlBouncerAStatus);
+            this.groupBox9.Controls.Add(this.btnConnectArduinoA);
+            this.groupBox9.Controls.Add(this.btnConnectSensorsA);
+            this.groupBox9.Controls.Add(this.cbbArduinoAComs);
+            this.groupBox9.Controls.Add(this.btnConnectSensorsB);
+            this.groupBox9.Controls.Add(this.cbbSensorsAComs);
+            this.groupBox9.Controls.Add(this.cbbSensorsBComs);
+            this.groupBox9.Controls.Add(this.btnConnectBouncerB);
+            this.groupBox9.Controls.Add(this.cbbBouncerBComs);
+            this.groupBox9.Controls.Add(this.label12);
+            this.groupBox9.Controls.Add(this.label11);
+            this.groupBox9.Controls.Add(this.pnlFieldStatus);
+            this.groupBox9.Controls.Add(this.cbbArduinoBComs);
+            this.groupBox9.Controls.Add(this.btnConnectArduinoB);
+            this.groupBox9.Controls.Add(this.btnConnectField);
+            this.groupBox9.Controls.Add(this.cbbFieldComs);
+            this.groupBox9.Controls.Add(this.btnConnectBouncerA);
+            this.groupBox9.Controls.Add(this.cbbBouncerAComs);
+            this.groupBox9.Controls.Add(this.label16);
+            this.groupBox9.Controls.Add(this.label17);
+            this.groupBox9.Controls.Add(this.label18);
+            this.groupBox9.Controls.Add(this.label19);
+            this.groupBox9.Controls.Add(this.label20);
+            this.groupBox9.Location = new System.Drawing.Point(477, 52);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(353, 435);
+            this.groupBox9.TabIndex = 57;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Connection Status";
+            // 
+            // pnlArduinoBStatus
+            // 
+            this.pnlArduinoBStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlArduinoBStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlArduinoBStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlArduinoBStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlArduinoBStatus.Location = new System.Drawing.Point(267, 354);
+            this.pnlArduinoBStatus.Name = "pnlArduinoBStatus";
+            this.pnlArduinoBStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlArduinoBStatus.TabIndex = 27;
+            // 
+            // pnlArduinoAStatus
+            // 
+            this.pnlArduinoAStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlArduinoAStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlArduinoAStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlArduinoAStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlArduinoAStatus.Location = new System.Drawing.Point(267, 243);
+            this.pnlArduinoAStatus.Name = "pnlArduinoAStatus";
+            this.pnlArduinoAStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlArduinoAStatus.TabIndex = 27;
+            // 
+            // pnlSensorsBStatus
+            // 
+            this.pnlSensorsBStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlSensorsBStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlSensorsBStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlSensorsBStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSensorsBStatus.Location = new System.Drawing.Point(267, 328);
+            this.pnlSensorsBStatus.Name = "pnlSensorsBStatus";
+            this.pnlSensorsBStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlSensorsBStatus.TabIndex = 27;
+            // 
+            // pnlSensorsAStatus
+            // 
+            this.pnlSensorsAStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlSensorsAStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlSensorsAStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlSensorsAStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSensorsAStatus.Location = new System.Drawing.Point(267, 217);
+            this.pnlSensorsAStatus.Name = "pnlSensorsAStatus";
+            this.pnlSensorsAStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlSensorsAStatus.TabIndex = 27;
+            // 
+            // pnlBouncerBStatus
+            // 
+            this.pnlBouncerBStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBouncerBStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlBouncerBStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlBouncerBStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlBouncerBStatus.Location = new System.Drawing.Point(267, 158);
+            this.pnlBouncerBStatus.Name = "pnlBouncerBStatus";
+            this.pnlBouncerBStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlBouncerBStatus.TabIndex = 27;
+            // 
+            // pnlBouncerAStatus
+            // 
+            this.pnlBouncerAStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBouncerAStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlBouncerAStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlBouncerAStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlBouncerAStatus.Location = new System.Drawing.Point(267, 132);
+            this.pnlBouncerAStatus.Name = "pnlBouncerAStatus";
+            this.pnlBouncerAStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlBouncerAStatus.TabIndex = 26;
+            // 
+            // btnConnectArduinoA
+            // 
+            this.btnConnectArduinoA.Location = new System.Drawing.Point(177, 244);
+            this.btnConnectArduinoA.Name = "btnConnectArduinoA";
+            this.btnConnectArduinoA.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectArduinoA.TabIndex = 67;
+            this.btnConnectArduinoA.Text = "Connect";
+            this.btnConnectArduinoA.UseVisualStyleBackColor = true;
+            // 
+            // btnConnectSensorsA
+            // 
+            this.btnConnectSensorsA.Location = new System.Drawing.Point(177, 218);
+            this.btnConnectSensorsA.Name = "btnConnectSensorsA";
+            this.btnConnectSensorsA.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectSensorsA.TabIndex = 63;
+            this.btnConnectSensorsA.Text = "Connect";
+            this.btnConnectSensorsA.UseVisualStyleBackColor = true;
+            // 
+            // cbbArduinoAComs
+            // 
+            this.cbbArduinoAComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbArduinoAComs.FormattingEnabled = true;
+            this.cbbArduinoAComs.Location = new System.Drawing.Point(85, 245);
+            this.cbbArduinoAComs.Name = "cbbArduinoAComs";
+            this.cbbArduinoAComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbArduinoAComs.TabIndex = 69;
+            // 
+            // btnConnectSensorsB
+            // 
+            this.btnConnectSensorsB.Location = new System.Drawing.Point(177, 330);
+            this.btnConnectSensorsB.Name = "btnConnectSensorsB";
+            this.btnConnectSensorsB.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectSensorsB.TabIndex = 68;
+            this.btnConnectSensorsB.Text = "Connect";
+            this.btnConnectSensorsB.UseVisualStyleBackColor = true;
+            // 
+            // cbbSensorsAComs
+            // 
+            this.cbbSensorsAComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSensorsAComs.FormattingEnabled = true;
+            this.cbbSensorsAComs.Location = new System.Drawing.Point(85, 219);
+            this.cbbSensorsAComs.Name = "cbbSensorsAComs";
+            this.cbbSensorsAComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbSensorsAComs.TabIndex = 64;
+            // 
+            // cbbSensorsBComs
+            // 
+            this.cbbSensorsBComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSensorsBComs.FormattingEnabled = true;
+            this.cbbSensorsBComs.Location = new System.Drawing.Point(85, 330);
+            this.cbbSensorsBComs.Name = "cbbSensorsBComs";
+            this.cbbSensorsBComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbSensorsBComs.TabIndex = 70;
+            // 
+            // btnConnectBouncerB
+            // 
+            this.btnConnectBouncerB.Location = new System.Drawing.Point(177, 158);
+            this.btnConnectBouncerB.Name = "btnConnectBouncerB";
+            this.btnConnectBouncerB.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectBouncerB.TabIndex = 63;
+            this.btnConnectBouncerB.Text = "Connect";
+            this.btnConnectBouncerB.UseVisualStyleBackColor = true;
+            // 
+            // cbbBouncerBComs
+            // 
+            this.cbbBouncerBComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbBouncerBComs.FormattingEnabled = true;
+            this.cbbBouncerBComs.Location = new System.Drawing.Point(85, 159);
+            this.cbbBouncerBComs.Name = "cbbBouncerBComs";
+            this.cbbBouncerBComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbBouncerBComs.TabIndex = 64;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 359);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 17);
+            this.label12.TabIndex = 78;
+            this.label12.Text = "Arduino B";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 249);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 17);
+            this.label11.TabIndex = 73;
+            this.label11.Text = "Arduino A";
+            // 
+            // pnlFieldStatus
+            // 
+            this.pnlFieldStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlFieldStatus.BackColor = System.Drawing.Color.Red;
+            this.pnlFieldStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlFieldStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlFieldStatus.Location = new System.Drawing.Point(267, 40);
+            this.pnlFieldStatus.Name = "pnlFieldStatus";
+            this.pnlFieldStatus.Size = new System.Drawing.Size(70, 24);
+            this.pnlFieldStatus.TabIndex = 25;
+            // 
+            // cbbArduinoBComs
+            // 
+            this.cbbArduinoBComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbArduinoBComs.FormattingEnabled = true;
+            this.cbbArduinoBComs.Location = new System.Drawing.Point(85, 356);
+            this.cbbArduinoBComs.Name = "cbbArduinoBComs";
+            this.cbbArduinoBComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbArduinoBComs.TabIndex = 75;
+            // 
+            // btnConnectArduinoB
+            // 
+            this.btnConnectArduinoB.Location = new System.Drawing.Point(177, 355);
+            this.btnConnectArduinoB.Name = "btnConnectArduinoB";
+            this.btnConnectArduinoB.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectArduinoB.TabIndex = 74;
+            this.btnConnectArduinoB.Text = "Connect";
+            this.btnConnectArduinoB.UseVisualStyleBackColor = true;
+            // 
+            // btnConnectField
+            // 
+            this.btnConnectField.Location = new System.Drawing.Point(177, 40);
+            this.btnConnectField.Name = "btnConnectField";
+            this.btnConnectField.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectField.TabIndex = 62;
+            this.btnConnectField.Text = "Connect";
+            this.btnConnectField.UseVisualStyleBackColor = true;
+            // 
+            // cbbFieldComs
+            // 
+            this.cbbFieldComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbFieldComs.FormattingEnabled = true;
+            this.cbbFieldComs.Location = new System.Drawing.Point(85, 40);
+            this.cbbFieldComs.Name = "cbbFieldComs";
+            this.cbbFieldComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbFieldComs.TabIndex = 63;
+            // 
+            // btnConnectBouncerA
+            // 
+            this.btnConnectBouncerA.Location = new System.Drawing.Point(177, 131);
+            this.btnConnectBouncerA.Name = "btnConnectBouncerA";
+            this.btnConnectBouncerA.Size = new System.Drawing.Size(84, 24);
+            this.btnConnectBouncerA.TabIndex = 60;
+            this.btnConnectBouncerA.Text = "Connect";
+            this.btnConnectBouncerA.UseVisualStyleBackColor = true;
+            this.btnConnectBouncerA.Click += new System.EventHandler(this.btnConnectBouncerA_Click);
+            // 
+            // cbbBouncerAComs
+            // 
+            this.cbbBouncerAComs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbBouncerAComs.FormattingEnabled = true;
+            this.cbbBouncerAComs.Location = new System.Drawing.Point(85, 132);
+            this.cbbBouncerAComs.Name = "cbbBouncerAComs";
+            this.cbbBouncerAComs.Size = new System.Drawing.Size(86, 24);
+            this.cbbBouncerAComs.TabIndex = 61;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 44);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 17);
+            this.label16.TabIndex = 56;
+            this.label16.Text = "Field";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 333);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 17);
+            this.label17.TabIndex = 54;
+            this.label17.Text = "Sensors B";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 222);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 17);
+            this.label18.TabIndex = 52;
+            this.label18.Text = "Sensors A";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 162);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(74, 17);
+            this.label19.TabIndex = 50;
+            this.label19.Text = "Bouncer B";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 136);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(74, 17);
+            this.label20.TabIndex = 48;
+            this.label20.Text = "Bouncer A";
+            // 
             // cbControlMode
             // 
             this.cbControlMode.AutoSize = true;
-            this.cbControlMode.Location = new System.Drawing.Point(442, 12);
+            this.cbControlMode.Location = new System.Drawing.Point(612, 13);
             this.cbControlMode.Name = "cbControlMode";
             this.cbControlMode.Size = new System.Drawing.Size(114, 21);
             this.cbControlMode.TabIndex = 36;
@@ -1179,25 +1369,16 @@
             this.cbControlMode.UseVisualStyleBackColor = true;
             this.cbControlMode.CheckedChanged += new System.EventHandler(this.cbControlMode_CheckedChanged);
             // 
-            // lbTimer
-            // 
-            this.lbTimer.AutoSize = true;
-            this.lbTimer.Location = new System.Drawing.Point(12, 604);
-            this.lbTimer.Name = "lbTimer";
-            this.lbTimer.Size = new System.Drawing.Size(16, 17);
-            this.lbTimer.TabIndex = 52;
-            this.lbTimer.Text = "0";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 655);
+            this.ClientSize = new System.Drawing.Size(842, 745);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.lbTimer);
             this.Controls.Add(this.cbControlMode);
             this.Controls.Add(this.Settings);
-            this.Controls.Add(this.lbScanning);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnScoreboard);
             this.Controls.Add(this.btnApplySettings);
@@ -1207,10 +1388,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.cbbComPorts);
             this.Controls.Add(this.statusStrip);
-            this.MinimumSize = new System.Drawing.Size(652, 683);
+            this.MinimumSize = new System.Drawing.Size(860, 792);
             this.Name = "MainForm";
             this.Text = "Bouncer Controller";
             this.Move += new System.EventHandler(this.MainForm_Move);
@@ -1228,8 +1407,6 @@
             this.groupBox7.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
@@ -1251,6 +1428,8 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).EndInit();
             this.Settings.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1274,8 +1453,6 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel tslConnection;
         private System.Windows.Forms.ToolStripProgressBar tspConnection;
-        private System.Windows.Forms.ComboBox cbbComPorts;
-        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.NumericUpDown nudTilt1;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -1326,17 +1503,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnApplySettings;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ProgressBar pbFieldBattery;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ProgressBar pbSensorsB;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ProgressBar pbSensorsA;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ProgressBar pbBouncerBatteryB;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ProgressBar pbBouncerBaterryA;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox lbLog;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox tbLogInput;
@@ -1344,9 +1510,7 @@
         private System.Windows.Forms.Button btnScoreboard;
         private System.Windows.Forms.Timer messageTimer;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Label lbScanning;
         private System.Windows.Forms.GroupBox Settings;
-        private System.Windows.Forms.CheckBox cbControlMode;
         private System.Windows.Forms.NumericUpDown nudTilt2;
         private System.Windows.Forms.NumericUpDown nudTilt4;
         private System.Windows.Forms.NumericUpDown nudTilt3;
@@ -1354,6 +1518,36 @@
         private System.Windows.Forms.TextBox tbTilt3;
         private System.Windows.Forms.Label lbTimer;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button btnConnectField;
+        private System.Windows.Forms.ComboBox cbbFieldComs;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel pnlArduinoBStatus;
+        private System.Windows.Forms.Panel pnlArduinoAStatus;
+        private System.Windows.Forms.Panel pnlSensorsBStatus;
+        private System.Windows.Forms.Panel pnlSensorsAStatus;
+        private System.Windows.Forms.Panel pnlBouncerBStatus;
+        private System.Windows.Forms.Panel pnlBouncerAStatus;
+        private System.Windows.Forms.Button btnConnectArduinoA;
+        private System.Windows.Forms.Button btnConnectSensorsA;
+        private System.Windows.Forms.ComboBox cbbArduinoAComs;
+        private System.Windows.Forms.Button btnConnectSensorsB;
+        private System.Windows.Forms.ComboBox cbbSensorsAComs;
+        private System.Windows.Forms.ComboBox cbbSensorsBComs;
+        private System.Windows.Forms.Button btnConnectBouncerB;
+        private System.Windows.Forms.ComboBox cbbBouncerBComs;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel pnlFieldStatus;
+        private System.Windows.Forms.ComboBox cbbArduinoBComs;
+        private System.Windows.Forms.Button btnConnectArduinoB;
+        private System.Windows.Forms.Button btnConnectBouncerA;
+        private System.Windows.Forms.ComboBox cbbBouncerAComs;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox cbControlMode;
     }
 }
 

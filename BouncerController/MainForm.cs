@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using EV3MessengerLib;
 using System.Management;
 
 namespace BouncerController {
     public partial class MainForm : Form {
-        private EV3Messenger ev3Messenger;
+        private EV3Messenger bouncerAMessenger;
+        private EV3Messenger bouncerBMessenger;
+        private EV3Messenger sensorAMessenger;
+        private EV3Messenger sensorBMessenger;
+        private EV3Messenger fieldMessenger;
         private Form controlForm;
         private Form scoreboardForm;
 
@@ -13,20 +18,36 @@ namespace BouncerController {
 
         public MainForm() {
             InitializeComponent();
-            ev3Messenger = new EV3Messenger();
+            bouncerAMessenger = bouncerBMessenger = sensorAMessenger = sensorBMessenger = fieldMessenger = new EV3Messenger();
 
             controlForm = new ControlForm();
             scoreboardForm = new ScoreboardForm();
         }
 
-        private void FillComList() {
-            cbbComPorts.Items.Clear();
+        private void FillComLists() {
+            List<string> coms = new List<string>();
             using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'")) {
                 var instances = new ManagementClass("Win32_SerialPort").GetInstances();
                 foreach (ManagementObject port in instances) {
-                    cbbComPorts.Items.Add(String.Format("{0}", port["deviceid"]));
+                    coms.Add(String.Format("{0}", port["deviceid"]));
                 }
             }
+            ComboBox[] comLists =
+            {
+                cbbFieldComs,
+                cbbArduinoAComs, cbbArduinoBComs,
+                cbbBouncerAComs, cbbBouncerBComs,
+                cbbSensorsAComs, cbbSensorsBComs
+            };
+
+            foreach (var comboBox in comLists) {
+                comboBox.Items.Clear();
+                for (var i = 0; i < coms.Count; i++) {
+                    string com = coms[i];
+                    comboBox.Items.Add(com);
+                }
+            }
+
             //string[] ports = SerialPort.GetPortNames();
             //foreach (string portName in ports)
             //{
@@ -39,67 +60,35 @@ namespace BouncerController {
         }
 
         private void btnConnect_Click(object sender, EventArgs e) {
-            toggleTop(false);
-            if (btnConnect.Text == "Connect") {
-                //String port = cbbComPorts.Text.Substring(0,cbbComPorts.Text.IndexOf(' '));
-                String port = cbbComPorts.Text;
-                if (ev3Messenger.Connect(port)) {
-                    UpdateButtonsAndConnectionInfo();
-                    lbLog.Items.Clear();
-                    messageTimer.Start();
-                } else {
-                    MessageBox.Show("Failed to connect to serial port '" + port + "'.\n"
-                        + "Is your EV3 connected to that serial port? Or is it using another one?");
-                }
-            } else {
-                //messageReceiveTimer.Stop();
-                ev3Messenger.Disconnect();
-                UpdateButtonsAndConnectionInfo();
-            }
-            toggleTop(true);
+
         }
 
         private void UpdateButtonsAndConnectionInfo() {
-            bool isConnected = ev3Messenger.IsConnected;
+            bool isConnected = bouncerAMessenger.IsConnected;
 
-            cbbComPorts.Enabled = !isConnected;
+            btnConnectBouncerA.Enabled = !isConnected;
 
             if (isConnected) {
-                btnConnect.Text = "Disconnect";
-                tslConnection.Text = "Connected: " + ev3Messenger.Port;
+                btnConnectBouncerA.Text = "Disconnect";
+                tslConnection.Text = "Connected: " + bouncerAMessenger.Port;
                 tspConnection.Value = 100;
                 messageTimer.Start();
             } else {
-                btnConnect.Text = "Connect";
+                btnConnectBouncerA.Text = "Connect";
                 tslConnection.Text = "Not Connected";
                 tspConnection.Value = 0;
                 messageTimer.Stop();
             }
         }
 
-        private void cbbComPorts_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e) {
-            toggleTop(false);
-            FillComList();
-            toggleTop(true);
-        }
 
-        private void toggleTop(bool toggleOn) {
-            btnRefresh.Enabled = cbbComPorts.Enabled = btnConnect.Enabled = toggleOn;
-            lbScanning.Visible = !toggleOn;
-            if (!toggleOn) {
-                this.Cursor = Cursors.WaitCursor;
-            } else {
-                this.Cursor = Cursors.Default;
-            }
+            FillComLists();
         }
 
         private void messageTimer_Tick(object sender, EventArgs e) {
-            if (ev3Messenger.IsConnected) {
-                EV3Message message = ev3Messenger.ReadMessage();
+            if (bouncerAMessenger.IsConnected) {
+                EV3Message message = bouncerAMessenger.ReadMessage();
                 if (message != null) {
                     switch (message.MailboxTitle) {
                         case "Message":
@@ -123,11 +112,11 @@ namespace BouncerController {
         }
 
         private void btnSend_Click(object sender, EventArgs e) {
-            if (ev3Messenger.IsConnected) {
+            if (bouncerAMessenger.IsConnected) {
                 string[] words = tbLogInput.Text.Split(':');
                 if (words.Length == 2) {
                     //ev3Messenger.SendMessage(words[0], words[1]);
-                    ev3Messenger.SendMessage("abc", "test");
+                    bouncerAMessenger.SendMessage("abc", "test");
                 } else {
                     lbLog.Items.Add("Wrong format, use <mailbox:message>");
                 }
@@ -172,12 +161,28 @@ namespace BouncerController {
         }
 
         private void btnDefaultTilt_Click(object sender, EventArgs e) {
-            ev3Messenger.SendMessage("abc", "test");
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            ev3Messenger.SendMessage("abc", "reset");
+        private void btnReset_Click(object sender, EventArgs e) {
+        }
+
+        private void btnConnectBouncerA_Click(object sender, EventArgs e) {
+            if (btnConnectBouncerA.Text == "Connect") {
+                //String port = cbbComPorts.Text.Substring(0,cbbComPorts.Text.IndexOf(' '));
+                String port = cbbBouncerAComs.Text;
+                if (bouncerAMessenger.Connect(port)) {
+                    UpdateButtonsAndConnectionInfo();
+                    lbLog.Items.Clear();
+                    messageTimer.Start();
+                } else {
+                    MessageBox.Show("Failed to connect to serial port '" + port + "'.\n"
+                        + "Is your EV3 connected to that serial port? Or is it using another one?");
+                }
+            } else {
+                //messageReceiveTimer.Stop();
+                bouncerAMessenger.Disconnect();
+                UpdateButtonsAndConnectionInfo();
+            }
         }
     }
 }
