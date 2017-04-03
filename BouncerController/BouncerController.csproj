@@ -51,12 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ControlForm.Designer.cs">
-      <DependentUpon>ControlForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="EV3Messenger\Communication\Communicator.cs" />
     <Compile Include="EV3Messenger\EV3Message.cs" />
     <Compile Include="EV3Messenger\EV3Messenger.cs" />
@@ -81,9 +75,6 @@
     <Compile Include="ScoreboardForm.Designer.cs">
       <DependentUpon>ScoreboardForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ControlForm.resx">
-      <DependentUpon>ControlForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
