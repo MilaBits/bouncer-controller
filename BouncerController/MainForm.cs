@@ -136,17 +136,64 @@ namespace BouncerController {
                 EV3Message message = bouncerAMessenger.ReadMessage();
                 if (message != null) {
                     switch (message.MailboxTitle) {
-                        case "Message":
-                            lbLog.Items.Add(message);
-                            lbLog.SelectedIndex = lbLog.Items.Count - 1;
-                            break;
-                        case "Tilt":
-                            tbTilt1.Text = message.ValueAsNumber.ToString();
-                            break;
                         case "Speed":
                             tbBouncerASpeed.Text = message.ValueAsNumber.ToString();
                             break;
                     }
+                }
+            }
+            if (sensorAMessenger.IsConnected) {
+                SensorHandler(sensorAMessenger, bouncerAMessenger);
+            }
+            if (sensorBMessenger.IsConnected) {
+                SensorHandler(sensorBMessenger, bouncerBMessenger);
+            }
+        }
+
+        private void SensorHandler(EV3Messenger receiver, EV3Messenger sender) {
+            EV3Message message = receiver.ReadMessage();
+            if (message.MailboxTitle == "Pressed") {
+                switch (Convert.ToInt16(message.ValueAsNumber)) {
+                    case 0:
+                        sender.SendMessage("Move", "Stop");
+                        break;
+                    case 1:
+                        // TODO: Testen
+                        if (sensorStates[0] == 1) {
+                            sender.SendMessage("Move", "Right");
+                            lbLog.Items.Add("1: Right");
+                        } else if (sensorStates[0] == 2) {
+                            sender.SendMessage("Move", "Left");
+                            lbLog.Items.Add("1: Left");
+                        }
+                        break;
+                    case 2:
+                        if (sensorStates[1] == 1) {
+                            sender.SendMessage("Move", "Right");
+                            lbLog.Items.Add("2: Right");
+                        } else if (sensorStates[1] == 2) {
+                            sender.SendMessage("Move", "Left");
+                            lbLog.Items.Add("2: Left");
+                        }
+                        break;
+                    case 3:
+                        if (sensorStates[2] == 1) {
+                            sender.SendMessage("Move", "Right");
+                            lbLog.Items.Add("3: Right");
+                        } else if (sensorStates[2] == 2) {
+                            sender.SendMessage("Move", "Left");
+                            lbLog.Items.Add("3: Left");
+                        }
+                        break;
+                    case 4:
+                        if (sensorStates[3] == 1) {
+                            sender.SendMessage("Move", "Right");
+                            lbLog.Items.Add("4: Right");
+                        } else if (sensorStates[3] == 2) {
+                            sender.SendMessage("Move", "Left");
+                            lbLog.Items.Add("4: Left");
+                        }
+                        break;
                 }
             }
         }
@@ -257,26 +304,27 @@ namespace BouncerController {
 
         private void btnApplySettings_Click(object sender, EventArgs e) {
             btnApplySettings.Enabled = false;
-            if (bouncerAMessenger.IsConnected) {
-                bouncerAMessenger.SendMessage("update", Convert.ToInt16(nudSpeed.Value));
-                tbBouncerASpeed.Text = nudSpeed.Text;
 
-                bouncerAMessenger.SendMessage("Message", "test");
+            if (bouncerAMessenger.IsConnected) {
+                //Set speed of bouncerA
+                bouncerAMessenger.SendMessage("Speed", Convert.ToInt16(nudSpeed.Value));
+                tbBouncerASpeed.Text = nudSpeed.Text;
             }
 
             if (bouncerBMessenger.IsConnected) {
-                bouncerBMessenger.SendMessage("update", Convert.ToInt16(nudSpeed.Value));
+                //Set speed of BouncerB
+                bouncerBMessenger.SendMessage("Speed", Convert.ToInt16(nudSpeed.Value));
                 tbBouncerBSpeed.Text = nudSpeed.Text;
-
-                bouncerBMessenger.SendMessage("Message", "test");
             }
 
             if (sensorAMessenger.IsConnected) {
+                //Generate sensor states
                 sensorStates = GenerateSensorStates();
                 string sensorString = String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
                     sensorStates[3]);
 
-                sensorAMessenger.SendMessage("update", "" + CheckToInt(cbA1) + CheckToInt(cbA2) + CheckToInt(cbA3) + CheckToInt(cbA4));
+                //Send sensorstring to SensorsA
+                sensorAMessenger.SendMessage("update", sensorString);
 
                 if (arduinoA.IsOpen) {
                     SetPanel("A1", sensorStates[0]);
@@ -288,26 +336,30 @@ namespace BouncerController {
                     arduinoA.DiscardOutBuffer();
                     arduinoA.DiscardInBuffer();
                     lbLog.Items.Add("Sent: " + sensorString + " to ArduinoA");
+                } else {
+                    lbLog.Items.Add("Connection with ArduinoA is not open");
                 }
-
             }
+
             if (sensorBMessenger.IsConnected) {
                 int[] sensorStates = GenerateSensorStates();
                 string sensorString = String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
                     sensorStates[3]);
 
-                sensorAMessenger.SendMessage("update", "" + CheckToInt(cbB1) + CheckToInt(cbB2) + CheckToInt(cbB3) + CheckToInt(cbB4));
+                sensorBMessenger.SendMessage("update", sensorString);
 
-                if (arduinoA.IsOpen) {
+                if (arduinoB.IsOpen) {
                     SetPanel("B1", sensorStates[0]);
                     SetPanel("B2", sensorStates[1]);
                     SetPanel("B3", sensorStates[2]);
                     SetPanel("B4", sensorStates[3]);
 
-                    arduinoA.Write(sensorString);
-                    arduinoA.DiscardOutBuffer();
-                    arduinoA.DiscardInBuffer();
+                    arduinoB.Write(sensorString);
+                    arduinoB.DiscardOutBuffer();
+                    arduinoB.DiscardInBuffer();
                     lbLog.Items.Add("Sent: " + sensorString + " to ArduinoB");
+                } else {
+                    lbLog.Items.Add("Connection with ArduinoB is not open");
                 }
             }
 
