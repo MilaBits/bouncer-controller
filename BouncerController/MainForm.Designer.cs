@@ -238,7 +238,6 @@
             this.cbA1.Size = new System.Drawing.Size(15, 14);
             this.cbA1.TabIndex = 11;
             this.cbA1.UseVisualStyleBackColor = true;
-            this.cbA1.CheckedChanged += new System.EventHandler(this.cbA1_CheckedChanged);
             // 
             // cbA2
             // 
@@ -764,6 +763,11 @@
             this.nudSpeed.Name = "nudSpeed";
             this.nudSpeed.Size = new System.Drawing.Size(80, 44);
             this.nudSpeed.TabIndex = 20;
+            this.nudSpeed.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
             // 
             // btnDefaultSpeed
             // 
@@ -808,7 +812,6 @@
             this.lbLog.Name = "lbLog";
             this.lbLog.Size = new System.Drawing.Size(439, 173);
             this.lbLog.TabIndex = 46;
-            this.lbLog.SelectedIndexChanged += new System.EventHandler(this.lbLog_SelectedIndexChanged);
             // 
             // btnClearLog
             // 

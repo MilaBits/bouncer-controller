@@ -38,6 +38,7 @@ namespace BouncerController {
 
             scoreboardForm = new ScoreboardForm();
             random = new Random();
+            sensorStates = GenerateSensorStates();
         }
 
         private void FillComLists() {
@@ -58,10 +59,12 @@ namespace BouncerController {
             };
 
             foreach (var comboBox in comLists) {
-                comboBox.Items.Clear();
-                for (var i = 0; i < coms.Count; i++) {
-                    string com = coms[i];
-                    comboBox.Items.Add(com);
+                if (comboBox.Enabled) {
+                    comboBox.Items.Clear();
+                    for (var i = 0; i < coms.Count; i++) {
+                        string com = coms[i];
+                        comboBox.Items.Add(com);
+                    }
                 }
             }
         }
@@ -148,54 +151,61 @@ namespace BouncerController {
             if (sensorBMessenger.IsConnected) {
                 SensorHandler(sensorBMessenger, bouncerBMessenger);
             }
+            lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
+                    sensorStates[3]));
+            lbLog.SelectedIndex = lbLog.Items.Count - 1;
         }
 
         private void SensorHandler(EV3Messenger receiver, EV3Messenger sender) {
             EV3Message message = receiver.ReadMessage();
-            if (message.MailboxTitle == "Pressed") {
-                switch (Convert.ToInt16(message.ValueAsNumber)) {
-                    case 0:
-                        sender.SendMessage("Move", "Stop");
-                        break;
-                    case 1:
-                        // TODO: Testen
-                        if (sensorStates[0] == 1) {
-                            sender.SendMessage("Move", "Right");
-                            lbLog.Items.Add("1: Right");
-                        } else if (sensorStates[0] == 2) {
-                            sender.SendMessage("Move", "Left");
-                            lbLog.Items.Add("1: Left");
-                        }
-                        break;
-                    case 2:
-                        if (sensorStates[1] == 1) {
-                            sender.SendMessage("Move", "Right");
-                            lbLog.Items.Add("2: Right");
-                        } else if (sensorStates[1] == 2) {
-                            sender.SendMessage("Move", "Left");
-                            lbLog.Items.Add("2: Left");
-                        }
-                        break;
-                    case 3:
-                        if (sensorStates[2] == 1) {
-                            sender.SendMessage("Move", "Right");
-                            lbLog.Items.Add("3: Right");
-                        } else if (sensorStates[2] == 2) {
-                            sender.SendMessage("Move", "Left");
-                            lbLog.Items.Add("3: Left");
-                        }
-                        break;
-                    case 4:
-                        if (sensorStates[3] == 1) {
-                            sender.SendMessage("Move", "Right");
-                            lbLog.Items.Add("4: Right");
-                        } else if (sensorStates[3] == 2) {
-                            sender.SendMessage("Move", "Left");
-                            lbLog.Items.Add("4: Left");
-                        }
-                        break;
+            if (message != null) {
+                if (message.MailboxTitle == "Pressed") {
+                    switch (Convert.ToInt16(message.ValueAsNumber)) {
+                        case 0:
+                            sender.SendMessage("Move", "Stop");
+                            lbLog.Items.Add("0: Stop");
+                            break;
+                        case 1:
+                            // TODO: Testen
+                            if (sensorStates[0] == 1) {
+                                sender.SendMessage("Move", "Right");
+                                lbLog.Items.Add("1: Right");
+                            } else if (sensorStates[0] == 2) {
+                                sender.SendMessage("Move", "Left");
+                                lbLog.Items.Add("1: Left");
+                            }
+                            break;
+                        case 2:
+                            if (sensorStates[1] == 1) {
+                                sender.SendMessage("Move", "Right");
+                                lbLog.Items.Add("2: Right");
+                            } else if (sensorStates[1] == 2) {
+                                sender.SendMessage("Move", "Left");
+                                lbLog.Items.Add("2: Left");
+                            }
+                            break;
+                        case 3:
+                            if (sensorStates[2] == 1) {
+                                sender.SendMessage("Move", "Right");
+                                lbLog.Items.Add("3: Right");
+                            } else if (sensorStates[2] == 2) {
+                                sender.SendMessage("Move", "Left");
+                                lbLog.Items.Add("3: Left");
+                            }
+                            break;
+                        case 4:
+                            if (sensorStates[3] == 1) {
+                                sender.SendMessage("Move", "Right");
+                                lbLog.Items.Add("4: Right");
+                            } else if (sensorStates[3] == 2) {
+                                sender.SendMessage("Move", "Left");
+                                lbLog.Items.Add("4: Left");
+                            }
+                            break;
+                    }
                 }
             }
+
         }
 
         private void btnClearLog_Click(object sender, EventArgs e) {
@@ -326,7 +336,7 @@ namespace BouncerController {
                 //Send sensorstring to SensorsA
                 sensorAMessenger.SendMessage("update", sensorString);
 
-                if (arduinoA.IsOpen) {
+                if (arduinoA != null && arduinoA.IsOpen) {
                     SetPanel("A1", sensorStates[0]);
                     SetPanel("A2", sensorStates[1]);
                     SetPanel("A3", sensorStates[2]);
@@ -337,7 +347,7 @@ namespace BouncerController {
                     arduinoA.DiscardInBuffer();
                     lbLog.Items.Add("Sent: " + sensorString + " to ArduinoA");
                 } else {
-                    lbLog.Items.Add("Connection with ArduinoA is not open");
+                    lbLog.Items.Add("Connection with ArduinoA is not open or connected");
                 }
             }
 
@@ -348,7 +358,7 @@ namespace BouncerController {
 
                 sensorBMessenger.SendMessage("update", sensorString);
 
-                if (arduinoB.IsOpen) {
+                if (arduinoB != null && arduinoB.IsOpen) {
                     SetPanel("B1", sensorStates[0]);
                     SetPanel("B2", sensorStates[1]);
                     SetPanel("B3", sensorStates[2]);
@@ -359,7 +369,7 @@ namespace BouncerController {
                     arduinoB.DiscardInBuffer();
                     lbLog.Items.Add("Sent: " + sensorString + " to ArduinoB");
                 } else {
-                    lbLog.Items.Add("Connection with ArduinoB is not open");
+                    lbLog.Items.Add("Connection with ArduinoB is not open or connected");
                 }
             }
 
@@ -412,13 +422,10 @@ namespace BouncerController {
             switch (state) {
                 case 0:
                     return Color.DimGray;
-                    break;
                 case 1:
                     return Color.Red;
-                    break;
                 case 2:
                     return Color.LimeGreen;
-                    break;
             }
             return Color.Black;
         }
@@ -427,13 +434,6 @@ namespace BouncerController {
             if (cb.Checked)
                 return 1;
             return 0;
-        }
-
-        private void cbA1_CheckedChanged(object sender, EventArgs e) {
-        }
-
-        private void lbLog_SelectedIndexChanged(object sender, EventArgs e) {
-
         }
     }
 }
