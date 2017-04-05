@@ -318,6 +318,7 @@ namespace BouncerController {
             if (bouncerAMessenger.IsConnected) {
                 //Set speed of bouncerA
                 bouncerAMessenger.SendMessage("Speed", Convert.ToInt16(nudSpeed.Value));
+                bouncerAMessenger.SendMessage("Fire", "Fire");
                 tbBouncerASpeed.Text = nudSpeed.Text;
             }
 
