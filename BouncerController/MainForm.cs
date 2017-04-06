@@ -11,8 +11,8 @@ using System.Management;
 
 namespace BouncerController {
     public partial class MainForm : Form {
-        public EV3Messenger bouncerAMessenger;
-        public EV3Messenger bouncerBMessenger;
+        private EV3Messenger bouncerAMessenger;
+        private EV3Messenger bouncerBMessenger;
         private EV3Messenger sensorAMessenger;
         private EV3Messenger sensorBMessenger;
         private EV3Messenger fieldMessenger;
@@ -41,9 +41,58 @@ namespace BouncerController {
             sensorStates = GenerateSensorStates();
         }
 
+        #region Button Handling
+        private void btnConnectField_Click(object sender, EventArgs e) {
+            connectToEV3(cbbFieldComs.Text.ToUpper(), fieldMessenger, sender);
+        }
+
+        private void btnConnectBouncerA_Click(object sender, EventArgs e) {
+            connectToEV3(cbbBouncerAComs.Text.ToUpper(), bouncerAMessenger, sender);
+        }
+
+        private void btnConnectBouncerB_Click(object sender, EventArgs e) {
+            connectToEV3(cbbBouncerBComs.Text.ToUpper(), bouncerBMessenger, sender);
+        }
+
+        private void btnConnectSensorsA_Click(object sender, EventArgs e) {
+            connectToEV3(cbbSensorsAComs.Text.ToUpper(), sensorAMessenger, sender);
+        }
+
+        private void btnConnectSensorsB_Click(object sender, EventArgs e) {
+            connectToEV3(cbbSensorsBComs.Text.ToUpper(), sensorBMessenger, sender);
+        }
+
+        private void btnConnectArduinoA_Click(object sender, EventArgs e) {
+            connectToArduino(cbbArduinoAComs.Text.ToUpper(), sender);
+        }
+
+        private void btnConnectArduinoB_Click(object sender, EventArgs e) {
+            connectToArduino(cbbArduinoBComs.Text.ToUpper(), sender);
+        }
+
+        private void btnApplySettings_Click(object sender, EventArgs e) {
+            ApplySettings();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e) {
+            FillComLists();
+        }
+
+        private void btnScoreboard_Click(object sender, EventArgs e) {
+            ToggleScoreboard();
+        }
+
+        private void btnDefaultTilt_Click(object sender, EventArgs e) {
+            bouncerAMessenger.SendMessage("test", "");
+        }
+        #endregion
+
         private void FillComLists() {
+            Cursor = Cursors.WaitCursor;
             List<string> coms = new List<string>();
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'")) {
+            using (
+                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'")
+            ) {
                 var instances = new ManagementClass("Win32_SerialPort").GetInstances();
                 foreach (ManagementObject port in instances) {
                     coms.Add(String.Format("{0}", port["deviceid"]));
@@ -67,6 +116,7 @@ namespace BouncerController {
                     }
                 }
             }
+            Cursor = Cursors.Default;
         }
 
         private void UpdateButtonsAndConnectionInfo(string messenger, bool connected) {
@@ -74,75 +124,65 @@ namespace BouncerController {
                 case "btnConnectBouncerA":
                     btnConnectBouncerA.Enabled = !connected;
                     cbbBouncerAComs.Enabled = !connected;
-                    if (connected) {
-                        pnlBouncerAStatus.BackColor = Color.Green;
-                    } else {
-                        pnlBouncerAStatus.BackColor = Color.Red;
-                    }
+                    pnlBouncerAStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
                 case "btnConnectBouncerB":
                     btnConnectBouncerB.Enabled = !connected;
                     cbbBouncerBComs.Enabled = !connected;
-                    if (connected) {
-                        pnlBouncerBStatus.BackColor = Color.Green;
-                    } else {
-                        pnlBouncerBStatus.BackColor = Color.Red;
-                    }
+                    pnlBouncerBStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
                 case "btnConnectSensorsA":
                     btnConnectSensorsA.Enabled = !connected;
                     cbbSensorsAComs.Enabled = !connected;
-                    if (connected) {
-                        pnlSensorsAStatus.BackColor = Color.Green;
-                    } else {
-                        pnlSensorsAStatus.BackColor = Color.Red;
-                    }
+                    pnlSensorsAStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
                 case "btnConnectField":
                     btnConnectField.Enabled = !connected;
                     cbbFieldComs.Enabled = !connected;
-                    if (connected) {
-                        pnlFieldStatus.BackColor = Color.Green;
-                    } else {
-                        pnlFieldStatus.BackColor = Color.Red;
-                    }
+                    pnlFieldStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
                 case "btnConnectArduinoA":
                     btnConnectArduinoA.Enabled = !connected;
                     cbbArduinoAComs.Enabled = !connected;
-                    if (connected) {
-                        pnlArduinoAStatus.BackColor = Color.Green;
-                    } else {
-                        pnlArduinoAStatus.BackColor = Color.Red;
-                    }
+                    pnlArduinoAStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
                 case "btnConnectArduinoB":
                     btnConnectArduinoB.Enabled = !connected;
                     cbbArduinoBComs.Enabled = !connected;
-                    if (connected) {
-                        pnlArduinoBStatus.BackColor = Color.Green;
-                    } else {
-                        pnlArduinoBStatus.BackColor = Color.Red;
-                    }
+                    pnlArduinoBStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e) {
-            Cursor = Cursors.WaitCursor;
-            FillComLists();
-            Cursor = Cursors.Default;
-        }
-
         private void messageTimer_Tick(object sender, EventArgs e) {
+            if (fieldMessenger.IsConnected) {
+                EV3Message message = fieldMessenger.ReadMessage();
+                if (message != null && message.MailboxTitle == "Fire") {
+                    if (message.ValueAsText == "A") {
+                        if (bouncerAMessenger.IsConnected) bouncerAMessenger.SendMessage("Fire", "Fire");
+                    } else if (message.ValueAsText == "B") {
+                        if (bouncerBMessenger.IsConnected) bouncerBMessenger.SendMessage("Fire", "Fire");
+                    }
+                } else if (message != null && message.MailboxTitle == "Score") {
+                    if (message.ValueAsText == "A") {
+                        SharedData.scoreA++;
+                    } else if (message.ValueAsText == "B") {
+                        SharedData.scoreB++;
+                    }
+                }
+            }
+
             if (bouncerAMessenger.IsConnected) {
                 EV3Message message = bouncerAMessenger.ReadMessage();
-                if (message != null) {
-                    switch (message.MailboxTitle) {
-                        case "Speed":
-                            tbBouncerASpeed.Text = message.ValueAsNumber.ToString();
-                            break;
-                    }
+                if (message != null && message.MailboxTitle == "Speed") {
+                    tbBouncerASpeed.Text = message.ValueAsNumber.ToString();
+                }
+            }
+
+            if (bouncerBMessenger.IsConnected) {
+                EV3Message message = bouncerBMessenger.ReadMessage();
+                if (message != null && message.MailboxTitle == "Speed") {
+                    tbBouncerBSpeed.Text = message.ValueAsNumber.ToString();
                 }
             }
             if (sensorAMessenger.IsConnected) {
@@ -151,8 +191,10 @@ namespace BouncerController {
             if (sensorBMessenger.IsConnected) {
                 SensorHandler(sensorBMessenger, bouncerBMessenger);
             }
+
+            //log stuff
             lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
-                    sensorStates[3]));
+                sensorStates[3]));
             lbLog.SelectedIndex = lbLog.Items.Count - 1;
         }
 
@@ -166,7 +208,6 @@ namespace BouncerController {
                             lbLog.Items.Add("0: Stop");
                             break;
                         case 1:
-                            // TODO: Testen
                             if (sensorStates[0] == 1) {
                                 sender.SendMessage("Move", "Right");
                                 lbLog.Items.Add("1: Right");
@@ -205,7 +246,6 @@ namespace BouncerController {
                     }
                 }
             }
-
         }
 
         private void btnClearLog_Click(object sender, EventArgs e) {
@@ -225,18 +265,6 @@ namespace BouncerController {
 
         private void MainForm_Move(object sender, EventArgs e) {
             moveChildWindow(controlForm);
-        }
-
-        private void btnScoreboard_Click(object sender, EventArgs e) {
-            if (scoreboardForm.Visible) {
-                scoreboardForm.Hide();
-            } else {
-                scoreboardForm.Show();
-            }
-        }
-
-        private void btnDefaultTilt_Click(object sender, EventArgs e) {
-            bouncerAMessenger.SendMessage("test", "");
         }
 
         private void connectToEV3(string port, EV3Messenger messenger, object sender) {
@@ -282,37 +310,15 @@ namespace BouncerController {
             messageTimer.Start();
         }
 
-        #region Button Handling
-        private void btnConnectField_Click(object sender, EventArgs e) {
-            connectToEV3(cbbFieldComs.Text.ToUpper(), fieldMessenger, sender);
+        private void ToggleScoreboard() {
+            if (scoreboardForm.Visible) {
+                scoreboardForm.Hide();
+            } else {
+                scoreboardForm.Show();
+            }
         }
 
-        private void btnConnectBouncerA_Click(object sender, EventArgs e) {
-            connectToEV3(cbbBouncerAComs.Text.ToUpper(), bouncerAMessenger, sender);
-        }
-
-        private void btnConnectBouncerB_Click(object sender, EventArgs e) {
-            connectToEV3(cbbBouncerBComs.Text.ToUpper(), bouncerBMessenger, sender);
-        }
-
-        private void btnConnectSensorsA_Click(object sender, EventArgs e) {
-            connectToEV3(cbbSensorsAComs.Text.ToUpper(), sensorAMessenger, sender);
-        }
-
-        private void btnConnectSensorsB_Click(object sender, EventArgs e) {
-            connectToEV3(cbbSensorsBComs.Text.ToUpper(), sensorBMessenger, sender);
-        }
-
-        private void btnConnectArduinoA_Click(object sender, EventArgs e) {
-            connectToArduino(cbbArduinoAComs.Text.ToUpper(), sender);
-        }
-
-        private void btnConnectArduinoB_Click(object sender, EventArgs e) {
-            connectToArduino(cbbArduinoBComs.Text.ToUpper(), sender);
-        }
-        #endregion
-
-        private void btnApplySettings_Click(object sender, EventArgs e) {
+        private void ApplySettings() {
             btnApplySettings.Enabled = false;
 
             if (bouncerAMessenger.IsConnected) {
@@ -431,10 +437,8 @@ namespace BouncerController {
             return Color.Black;
         }
 
-        private int CheckToInt(CheckBox cb) {
-            if (cb.Checked)
-                return 1;
-            return 0;
+        private void btnScoreStart_Click(object sender, EventArgs e) {
+            SharedData.timeLeft = 300;
         }
     }
 }

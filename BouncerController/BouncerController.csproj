@@ -54,6 +54,7 @@
     <Compile Include="EV3Messenger\Communication\Communicator.cs" />
     <Compile Include="EV3Messenger\EV3Message.cs" />
     <Compile Include="EV3Messenger\EV3Messenger.cs" />
+    <Compile Include="SharedData.cs" />
     <None Include="EV3Messenger\Properties\AssemblyInfo.cs" />
     <Compile Include="EV3Messenger\Protocol\ArrayHelper.cs" />
     <Compile Include="EV3Messenger\Protocol\FieldInfo.cs" />
@@ -112,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BOUNZ1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BOUNZ.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
