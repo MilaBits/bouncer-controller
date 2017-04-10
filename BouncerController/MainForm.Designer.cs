@@ -117,6 +117,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.btnScoreStart = new System.Windows.Forms.Button();
+            this.tmBlink = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt3)).BeginInit();
@@ -1244,6 +1245,12 @@
             this.btnScoreStart.UseVisualStyleBackColor = true;
             this.btnScoreStart.Click += new System.EventHandler(this.btnScoreStart_Click);
             // 
+            // tmBlink
+            // 
+            this.tmBlink.Enabled = true;
+            this.tmBlink.Interval = 500;
+            this.tmBlink.Tick += new System.EventHandler(this.tmBlink_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1380,6 +1387,7 @@
         private System.Windows.Forms.TextBox tbBouncerBSpeed;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnScoreStart;
+        private System.Windows.Forms.Timer tmBlink;
     }
 }
 

@@ -27,6 +27,7 @@ namespace BouncerController {
         private Random random;
 
         private int[] sensorStates;
+        private bool LedTick;
 
         public MainForm() {
             InitializeComponent();
@@ -155,47 +156,49 @@ namespace BouncerController {
         }
 
         private void messageTimer_Tick(object sender, EventArgs e) {
-            if (fieldMessenger.IsConnected) {
-                EV3Message message = fieldMessenger.ReadMessage();
-                if (message != null && message.MailboxTitle == "Fire") {
-                    if (message.ValueAsText == "A") {
-                        if (bouncerAMessenger.IsConnected) bouncerAMessenger.SendMessage("Fire", "Fire");
-                    } else if (message.ValueAsText == "B") {
-                        if (bouncerBMessenger.IsConnected) bouncerBMessenger.SendMessage("Fire", "Fire");
+            if (SharedData.timeLeft > 0) {
+                if (fieldMessenger.IsConnected) {
+                    EV3Message message = fieldMessenger.ReadMessage();
+                    if (message != null && message.MailboxTitle == "Fire") {
+                        if (message.ValueAsText == "A") {
+                            if (bouncerAMessenger.IsConnected) bouncerAMessenger.SendMessage("Fire", "Fire");
+                        } else if (message.ValueAsText == "B") {
+                            if (bouncerBMessenger.IsConnected) bouncerBMessenger.SendMessage("Fire", "Fire");
+                        }
+                    } else if (message != null && message.MailboxTitle == "Score") {
+                        if (message.ValueAsText == "A") {
+                            SharedData.scoreA++;
+                        } else if (message.ValueAsText == "B") {
+                            SharedData.scoreB++;
+                        }
                     }
-                } else if (message != null && message.MailboxTitle == "Score") {
-                    if (message.ValueAsText == "A") {
-                        SharedData.scoreA++;
-                    } else if (message.ValueAsText == "B") {
-                        SharedData.scoreB++;
+                }
+
+                if (bouncerAMessenger.IsConnected) {
+                    EV3Message message = bouncerAMessenger.ReadMessage();
+                    if (message != null && message.MailboxTitle == "Speed") {
+                        tbBouncerASpeed.Text = message.ValueAsNumber.ToString();
                     }
                 }
-            }
 
-            if (bouncerAMessenger.IsConnected) {
-                EV3Message message = bouncerAMessenger.ReadMessage();
-                if (message != null && message.MailboxTitle == "Speed") {
-                    tbBouncerASpeed.Text = message.ValueAsNumber.ToString();
+                if (bouncerBMessenger.IsConnected) {
+                    EV3Message message = bouncerBMessenger.ReadMessage();
+                    if (message != null && message.MailboxTitle == "Speed") {
+                        tbBouncerBSpeed.Text = message.ValueAsNumber.ToString();
+                    }
                 }
-            }
-
-            if (bouncerBMessenger.IsConnected) {
-                EV3Message message = bouncerBMessenger.ReadMessage();
-                if (message != null && message.MailboxTitle == "Speed") {
-                    tbBouncerBSpeed.Text = message.ValueAsNumber.ToString();
+                if (sensorAMessenger.IsConnected) {
+                    SensorHandler(sensorAMessenger, bouncerAMessenger);
                 }
-            }
-            if (sensorAMessenger.IsConnected) {
-                SensorHandler(sensorAMessenger, bouncerAMessenger);
-            }
-            if (sensorBMessenger.IsConnected) {
-                SensorHandler(sensorBMessenger, bouncerBMessenger);
-            }
+                if (sensorBMessenger.IsConnected) {
+                    SensorHandler(sensorBMessenger, bouncerBMessenger);
+                }
 
-            //log stuff
-            lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
-                sensorStates[3]));
-            lbLog.SelectedIndex = lbLog.Items.Count - 1;
+                //log stuff
+                lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
+                    sensorStates[3]));
+                lbLog.SelectedIndex = lbLog.Items.Count - 1;
+            }
         }
 
         private void SensorHandler(EV3Messenger receiver, EV3Messenger sender) {
@@ -439,6 +442,24 @@ namespace BouncerController {
 
         private void btnScoreStart_Click(object sender, EventArgs e) {
             SharedData.timeLeft = 300;
+            SharedData.scoreA = 0;
+            SharedData.scoreB = 0;
+        }
+
+        private void tmBlink_Tick(object sender, EventArgs e) {
+            if (SharedData.timeLeft < 1) {
+                LedTick = !LedTick;
+                if (LedTick) {
+                    if (arduinoA != null && arduinoA.IsOpen) arduinoA.Write("2121\n");
+                    if (arduinoB != null && arduinoB.IsOpen) arduinoB.Write("2121\n");
+                } else {
+                    if (arduinoA != null && arduinoA.IsOpen) arduinoA.Write("1212\n");
+                    if (arduinoB != null && arduinoB.IsOpen) arduinoB.Write("1212\n");
+                }
+
+                if (arduinoA != null && arduinoA.IsOpen) arduinoA.DiscardInBuffer();
+                if (arduinoB != null && arduinoB.IsOpen) arduinoB.DiscardInBuffer();
+            }
         }
     }
 }

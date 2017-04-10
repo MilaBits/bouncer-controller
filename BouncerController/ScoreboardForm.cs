@@ -136,16 +136,6 @@ namespace BouncerController {
                         else
                             lbTime.ForeColor = Color.Red;
                     }
-                    if (SharedData.timeLeft == 0) {
-                        //if (lbTime.ForeColor == Color.Red)
-                        //    lbTime.ForeColor = Color.FromArgb(115, 87, 94);
-                        //else
-                        //    lbTime.ForeColor = Color.Red;
-
-                        //if (lbTime.BackColor == Color.FromArgb(115, 87, 94)) lbTime.BackColor = Color.Red)
-
-                        //else lbTime.BackColor = Color.FromArgb(115, 87, 94);
-                    }
 
                     if (SharedData.timeLeft > 0) {
                         SharedData.timeLeft--;
