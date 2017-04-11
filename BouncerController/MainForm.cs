@@ -137,6 +137,11 @@ namespace BouncerController {
                     cbbSensorsAComs.Enabled = !connected;
                     pnlSensorsAStatus.BackColor = connected ? Color.Green : Color.Red;
                     break;
+                case "btnConnectSensorsB":
+                    btnConnectSensorsB.Enabled = !connected;
+                    cbbSensorsBComs.Enabled = !connected;
+                    pnlSensorsBStatus.BackColor = connected ? Color.Green : Color.Red;
+                    break;
                 case "btnConnectField":
                     btnConnectField.Enabled = !connected;
                     cbbFieldComs.Enabled = !connected;
@@ -195,55 +200,60 @@ namespace BouncerController {
                 }
 
                 //log stuff
-                lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
-                    sensorStates[3]));
+                //lbLog.Items.Add(String.Format("{0}{1}{2}{3}\n", sensorStates[0], sensorStates[1], sensorStates[2],
+                    //sensorStates[3]));
                 lbLog.SelectedIndex = lbLog.Items.Count - 1;
             }
         }
 
         private void SensorHandler(EV3Messenger receiver, EV3Messenger sender) {
+            char team = ' ';
+            if (receiver == sensorAMessenger) team = 'A';
+            if (receiver == sensorBMessenger) team = 'B';
+            if (team == ' ') return;
+
             EV3Message message = receiver.ReadMessage();
             if (message != null) {
                 if (message.MailboxTitle == "Pressed") {
                     switch (Convert.ToInt16(message.ValueAsNumber)) {
                         case 0:
                             sender.SendMessage("Move", "Stop");
-                            lbLog.Items.Add("0: Stop");
+                            lbLog.Items.Add(team + "0: Stop");
                             break;
                         case 1:
                             if (sensorStates[0] == 1) {
                                 sender.SendMessage("Move", "Right");
-                                lbLog.Items.Add("1: Right");
+                                lbLog.Items.Add(team + "1: Right");
                             } else if (sensorStates[0] == 2) {
                                 sender.SendMessage("Move", "Left");
-                                lbLog.Items.Add("1: Left");
+                                lbLog.Items.Add(team + "1: Left");
                             }
                             break;
                         case 2:
                             if (sensorStates[1] == 1) {
                                 sender.SendMessage("Move", "Right");
-                                lbLog.Items.Add("2: Right");
+                                lbLog.Items.Add(team + "2: Right");
                             } else if (sensorStates[1] == 2) {
                                 sender.SendMessage("Move", "Left");
-                                lbLog.Items.Add("2: Left");
+                                lbLog.Items.Add(team + "2: Left");
                             }
                             break;
                         case 3:
                             if (sensorStates[2] == 1) {
                                 sender.SendMessage("Move", "Right");
-                                lbLog.Items.Add("3: Right");
+                                lbLog.Items.Add(team + "3: Right");
                             } else if (sensorStates[2] == 2) {
                                 sender.SendMessage("Move", "Left");
-                                lbLog.Items.Add("3: Left");
+                                lbLog.Items.Add(team + "3: Left");
                             }
                             break;
                         case 4:
                             if (sensorStates[3] == 1) {
                                 sender.SendMessage("Move", "Right");
-                                lbLog.Items.Add("4: Right");
+                                lbLog.Items.Add(team + "4: Right");
                             } else if (sensorStates[3] == 2) {
                                 sender.SendMessage("Move", "Left");
-                                lbLog.Items.Add("4: Left");
+                                lbLog.Items.Add(team + "4: Left");
                             }
                             break;
                     }
@@ -282,7 +292,7 @@ namespace BouncerController {
                                         + "Is your EV3 connected to that serial port? Or is it using another one?");
                     }
                 } else {
-                    messageReceiveTimer.Stop();
+                    //messageReceiveTimer.Stop();
                     lbMessageTimer.Text = "MessageTimer: Stopped";
                     messenger.Disconnect();
                     UpdateButtonsAndConnectionInfo(((Button)sender).Name, false);
@@ -414,16 +424,16 @@ namespace BouncerController {
                     pnlA4.BackColor = GetColor(sensorState);
                     break;
                 case "B1":
-                    pnlA1.BackColor = GetColor(sensorState);
+                    pnlB1.BackColor = GetColor(sensorState);
                     break;
                 case "B2":
-                    pnlA2.BackColor = GetColor(sensorState);
+                    pnlB2.BackColor = GetColor(sensorState);
                     break;
                 case "B3":
-                    pnlA3.BackColor = GetColor(sensorState);
+                    pnlB3.BackColor = GetColor(sensorState);
                     break;
                 case "B4":
-                    pnlA4.BackColor = GetColor(sensorState);
+                    pnlB4.BackColor = GetColor(sensorState);
                     break;
             }
         }

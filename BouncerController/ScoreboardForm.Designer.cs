@@ -32,12 +32,12 @@
             this.lbScoreALabel = new System.Windows.Forms.Label();
             this.lbScoreBLabel = new System.Windows.Forms.Label();
             this.scorePanel = new System.Windows.Forms.Panel();
+            this.lbDivider = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbTime = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tmUpdate = new System.Windows.Forms.Timer(this.components);
-            this.lbDivider = new System.Windows.Forms.Label();
             this.scorePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -144,6 +144,20 @@
             this.scorePanel.Size = new System.Drawing.Size(548, 392);
             this.scorePanel.TabIndex = 7;
             // 
+            // lbDivider
+            // 
+            this.lbDivider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDivider.AutoSize = true;
+            this.lbDivider.Font = new System.Drawing.Font("Baloo Bhaina", 71.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDivider.Location = new System.Drawing.Point(197, 120);
+            this.lbDivider.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDivider.Name = "lbDivider";
+            this.lbDivider.Size = new System.Drawing.Size(116, 193);
+            this.lbDivider.TabIndex = 9;
+            this.lbDivider.Text = "-";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -156,17 +170,6 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(-1, 315);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(349, 138);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
             // lbTime
             // 
             this.lbTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -178,6 +181,17 @@
             this.lbTime.Size = new System.Drawing.Size(531, 193);
             this.lbTime.TabIndex = 8;
             this.lbTime.Text = "Time: 5:00";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(-1, 315);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(349, 138);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -193,22 +207,8 @@
             // tmUpdate
             // 
             this.tmUpdate.Enabled = true;
-            this.tmUpdate.Interval = 10;
+            this.tmUpdate.Interval = 1000;
             this.tmUpdate.Tick += new System.EventHandler(this.tmUpdate_Tick);
-            // 
-            // lbDivider
-            // 
-            this.lbDivider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbDivider.AutoSize = true;
-            this.lbDivider.Font = new System.Drawing.Font("Baloo Bhaina", 71.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDivider.Location = new System.Drawing.Point(197, 120);
-            this.lbDivider.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbDivider.Name = "lbDivider";
-            this.lbDivider.Size = new System.Drawing.Size(116, 193);
-            this.lbDivider.TabIndex = 9;
-            this.lbDivider.Text = "-";
             // 
             // ScoreboardForm
             // 

@@ -118,6 +118,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnScoreStart = new System.Windows.Forms.Button();
             this.tmBlink = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTilt3)).BeginInit();
@@ -132,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSpeed)).BeginInit();
             this.Settings.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRandomTilt
@@ -623,7 +625,7 @@
             // 
             // pnlB3
             // 
-            this.pnlB3.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlB3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pnlB3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlB3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlB3.Location = new System.Drawing.Point(78, 17);
@@ -645,7 +647,7 @@
             // 
             // pnlB1
             // 
-            this.pnlB1.BackColor = System.Drawing.Color.Red;
+            this.pnlB1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pnlB1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlB1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlB1.Location = new System.Drawing.Point(6, 17);
@@ -693,7 +695,7 @@
             // 
             // pnlA2
             // 
-            this.pnlA2.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlA2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pnlA2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlA2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlA2.Location = new System.Drawing.Point(42, 17);
@@ -704,7 +706,7 @@
             // 
             // pnlA1
             // 
-            this.pnlA1.BackColor = System.Drawing.Color.Red;
+            this.pnlA1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pnlA1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlA1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlA1.Location = new System.Drawing.Point(6, 17);
@@ -793,11 +795,11 @@
             // 
             // btnApplySettings
             // 
-            this.btnApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApplySettings.Location = new System.Drawing.Point(9, 402);
             this.btnApplySettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnApplySettings.Name = "btnApplySettings";
-            this.btnApplySettings.Size = new System.Drawing.Size(171, 67);
+            this.btnApplySettings.Size = new System.Drawing.Size(171, 40);
             this.btnApplySettings.TabIndex = 37;
             this.btnApplySettings.Text = "Apply";
             this.btnApplySettings.UseVisualStyleBackColor = true;
@@ -812,16 +814,16 @@
             this.lbLog.Location = new System.Drawing.Point(184, 402);
             this.lbLog.Margin = new System.Windows.Forms.Padding(2);
             this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(439, 173);
+            this.lbLog.Size = new System.Drawing.Size(439, 212);
             this.lbLog.TabIndex = 46;
             // 
             // btnClearLog
             // 
             this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearLog.Location = new System.Drawing.Point(9, 544);
+            this.btnClearLog.Location = new System.Drawing.Point(9, 584);
             this.btnClearLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(171, 31);
+            this.btnClearLog.Size = new System.Drawing.Size(171, 30);
             this.btnClearLog.TabIndex = 44;
             this.btnClearLog.Text = "Clear Log";
             this.btnClearLog.UseVisualStyleBackColor = true;
@@ -1236,10 +1238,10 @@
             // btnScoreStart
             // 
             this.btnScoreStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScoreStart.Location = new System.Drawing.Point(9, 473);
+            this.btnScoreStart.Location = new System.Drawing.Point(9, 446);
             this.btnScoreStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnScoreStart.Name = "btnScoreStart";
-            this.btnScoreStart.Size = new System.Drawing.Size(171, 67);
+            this.btnScoreStart.Size = new System.Drawing.Size(171, 40);
             this.btnScoreStart.TabIndex = 58;
             this.btnScoreStart.Text = "Start Round";
             this.btnScoreStart.UseVisualStyleBackColor = true;
@@ -1251,11 +1253,24 @@
             this.tmBlink.Interval = 500;
             this.tmBlink.Tick += new System.EventHandler(this.tmBlink_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = global::BouncerController.Properties.Resources.BOUNZ;
+            this.pictureBox1.Location = new System.Drawing.Point(9, 491);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(171, 88);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 59;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 586);
+            this.ClientSize = new System.Drawing.Size(633, 628);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnScoreStart);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.Settings);
@@ -1267,6 +1282,7 @@
             this.Controls.Add(this.btnClearLog);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(649, 667);
             this.Name = "MainForm";
             this.Text = "Bouncer Controller";
             this.Move += new System.EventHandler(this.MainForm_Move);
@@ -1289,6 +1305,7 @@
             this.Settings.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1388,6 +1405,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnScoreStart;
         private System.Windows.Forms.Timer tmBlink;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

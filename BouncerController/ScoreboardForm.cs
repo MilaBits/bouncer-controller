@@ -118,12 +118,7 @@ namespace BouncerController {
                     lbTime.Visible = true;
                     lbTime.ForeColor = Color.FromArgb(115, 87, 94);
                 }
-
-                if (SharedData.timeLeft < 10) {
-                    tmUpdate.Interval = 1000;
-                } else {
-                    tmUpdate.Interval = 10;
-                }
+                
                 if (SharedData.timeLeft >= 0) {
                     lbScoreA.Text = SharedData.scoreA.ToString();
                     lbScoreB.Text = SharedData.scoreB.ToString();
